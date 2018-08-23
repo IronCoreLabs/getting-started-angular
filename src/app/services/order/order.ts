@@ -1,7 +1,7 @@
-import { Ironable } from '../iron/ironable';
+import { IronEncrypt } from '../iron/iron-encrypt';
 import { Utils } from '../../utils';
 
-@Ironable({groupId: 'away-team'})
+@IronEncrypt({groupId: 'away-team'})
 export class Order {
     public date = new Date();
     constructor(public title: string, public message: string, public id?: Number) {

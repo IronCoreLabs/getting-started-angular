@@ -53,17 +53,17 @@ export class IronService {
     });
   }
 
-  getGroup(groupID: string) {
-    return this.initp.then(() => {
-      return IronWeb.group.get(groupID);
-    });
-  }
-
-  decrypt<T>(encryptedDocument: EncryptedDocument) {
+  decrypt(encryptedDocument: EncryptedDocument) {
     return from(this.initp
             .then(() => {
               return IronWeb.document.decrypt('' + encryptedDocument.id, encryptedDocument.document);
             }));
+  }
+
+  getGroup(groupID: string) {
+    return this.initp.then(() => {
+      return IronWeb.group.get(groupID);
+    });
   }
 
   /**
