@@ -1,39 +1,32 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+.DS_STORE
 
-# compiled output
-/dist
-/tmp
-/out-tsc
+/dist/
+bazel-*
+e2e_test.*
+node_modules
+bower_components
+tools/gulp-tasks/cldr/cldr-data/
 
-# dependencies
-/node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
+# Include when developing application packages.
+pubspec.lock
+.c9
+.idea/
 .settings/
-*.sublime-workspace
+*.swo
+modules/.settings
+.bazelrc
+.vscode
+modules/.vscode
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# Don't check in secret files
+*secret.js
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
+# Ignore npm/yarn debug log
 npm-debug.log
 yarn-error.log
-testem.log
-/typings
 
-# System Files
-.DS_Store
-Thumbs.db
+# build-analytics
+.build-analytics
+
+# rollup-test output
+/modules/rollup-test/dist/

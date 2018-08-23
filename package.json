@@ -20,7 +20,13 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@ironcorelabs/ironweb": "^1.0.5",
+    "angular-in-memory-web-api": "^0.6.1",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
+    "jsonwebtoken": "^8.3.0",
+    "npm": "^6.4.0",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
   },

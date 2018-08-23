@@ -1,0 +1,28 @@
+.main-style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F6F8FA;
+}
+
+.main-style h1 {
+    margin: 20px;
+}
+
+.panel-sections {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.order-section {
+    min-width: 550px
+};
+
+loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}

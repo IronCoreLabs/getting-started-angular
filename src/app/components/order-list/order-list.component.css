@@ -1,0 +1,63 @@
+
+    .header-text {
+        text-align: center;
+        margin-top: 25;
+    }
+
+    .list-warning {
+        max-width: 525;
+        color: #fefefe;
+        line-height: 1.125;
+        padding: 10px 15px;
+        text-align: center;
+        background-color: #00BCD4;
+        margin: 30px 0;
+    }
+
+    .order-row {
+        width: 500;
+        padding: 15px 7px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+    }
+
+    .order-row :last-child {
+        border-bottom: none;
+    }
+
+    .order-row :hover {
+        background-color: #ddd;
+    }
+
+    .order-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .todo-title {
+        font-weight: bold;
+        margin-left: 20;
+    }
+
+    timestamp {
+        position: absolute;
+        right: 0;
+    }
+
+    order-body {
+        margin-top: 20;
+        padding-left: 15;
+    }
+
+    .empty-order-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18;
+        height: 235;
+        border: 3px dashed #ccc;
+        margin-top: 10;
+    }

@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+/* prettier-ignore */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* prettier-ignore */
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html,
+body {
+    height: 100%;
+    font-family: "proxima-nova", helvetica, arial, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 1;
+}
+h1 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#root header {
+    flex: 0 1 auto;
+}
+#root main {
+    flex: 1 1 auto;
+}
+
+#initLoader {
+    position: relative;
+}
+#initLoader:before {
+    content: "";
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border-top: 10px solid #ee2e2a;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    z-index: 9;
+    top: 10px;
+    left: 10px;
+    animation: rt 1.5s infinite;
+}
+@keyframes rt {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.snackbar {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition-property: opacity, top;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    margin-top: 55px;
+    min-height: 14px;
+    min-width: 300px;
+    max-width: 450px;
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    line-height: 22px;
+    padding: 18px 24px;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 0;
+}
+.snackbar-success {
+    background-color: #00c853;
+}
+.snackbar-error {
+    background-color: #d51819;
+}
+.snackbar-info {
+    background-color: #00bcd4;
+}
+.snackbar-warning {
+    background-color: #fcd92d;
+}
+.snackbar-action {
+    background: inherit;
+    display: inline-block;
+    border: none;
+    margin-left: 24px;
+    padding: 0;
+}

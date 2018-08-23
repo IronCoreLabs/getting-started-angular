@@ -1,0 +1,43 @@
+.header-text {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.order-header {
+    font-size: 18px;
+    padding: 7px 0;
+    margin: 10px 0;
+    display: flex;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.order-header .label {
+    width: 60px;
+    font-weight: bold;
+    padding: 0 7px;
+}
+
+.generic-input {
+    width: 85%;
+    font-size: 18;
+    padding: 7;
+    border: 1px solid #D9D9D9;
+    border-left: 3px solid #F44336;
+    margin: 15px 0;
+    display: block;
+}
+
+button {
+    background: #F44336;
+    border-radius: 4px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 6px 20px;
+    text-transform: uppercase;
+}
+
+.button-icon {
+    margin: 0 10px 0 -7px
+}

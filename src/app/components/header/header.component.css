@@ -1,0 +1,79 @@
+.nav {
+    background-color: #2c2c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: #fff;
+    font-size: 26;
+}
+
+.nav > img {
+    margin-right: 5px
+}
+
+nav > div {
+    position: relative;
+}
+
+dropdown {
+    min-width: 280px;
+    display: none;
+    position: absolute;
+    right: 0px;
+    color: #000;
+    font-size: 14px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+dropdownShow {
+    display: block
+}
+
+loginText {
+    font-size: 20px;
+    padding: 10px 15px;
+    color: #777;
+    font-weight: 400;
+}
+
+dropdownUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 15px;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+}
+
+dropdownUser :hover {
+  background-color: #eee;
+}
+
+userInfo {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+userText {
+    margin-left: 15px
+}
+
+userName {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+userRole {
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
+}
+
+chevron {
+    color: #ccc
+}
