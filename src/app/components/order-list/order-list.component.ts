@@ -17,10 +17,33 @@ export class OrderListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.list().subscribe((response) => console.log(response));
+    this.orderService.list().subscribe(() => console.log());
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //   /**
   //    * Get list of orders and display them as individual rows

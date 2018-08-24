@@ -29,8 +29,8 @@ export class AppService {
   private getTestGroupDetails() {
     const existingTestGroupID = localStorage.getItem(GROUP_ID_STORAGE_KEY);
 
-    // this.ironService.createGroup({groupID: 'away-team'}).then((group) => {
-    //   console.log('away-team group created');
+    // this.ironService.createGroup({groupID: 'top-secret'}).then((group) => {
+    //   console.log('top-secret group created');
     //   console.log(group);
     // });
 

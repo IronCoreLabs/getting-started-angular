@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Order } from './order';
 import { HttpClient } from '@angular/common/http';
 import { IronService, EncryptedDocument } from '../iron/iron.service';
@@ -24,11 +24,15 @@ export class OrderService {
     order.date = new Date();
     return this.http.post<Order>(this.url, order)
       .pipe(
-        tap((o) => this.newOrders$.next(o))
+        tap(() => this.newOrders$.next(order)),
+        map((o) => Order.revive(o))
       );
   }
 
-  list(): Observable<EncryptedDocument> {
-    return this.http.get<EncryptedDocument>(this.url);
+  list(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.url)
+      .pipe(
+        map((orders) => orders.map((order) => Order.revive(order)))
+      );
   }
 }

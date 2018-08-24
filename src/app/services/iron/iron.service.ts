@@ -2,6 +2,8 @@ import * as IronWeb from '@ironcorelabs/ironweb';
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
 import { from, Observable } from 'rxjs';
+import { Utils } from '../../utils';
+import { Order } from '../order/order';
 
 // TODO: Figure out if this is needed; if so npm package needs to be adjusted
 declare module '@ironcorelabs/ironweb' {
@@ -22,6 +24,22 @@ export class EncryptedDocument {
   constructor(response?: IronWeb.EncryptedDocumentResponse) {
     this.id = response ? +response.documentID : -1;
     this.document = response ? response.document : '';
+  }
+
+  static from(json: string): EncryptedDocument {
+    return {
+      id: json['id'],
+      document: json['document']
+    };
+  }
+}
+
+export class DecryptedDocument {
+  id: Number;
+  document: string;
+  constructor(response?: IronWeb.DecryptedDocumentResponse) {
+    this.id = +response.documentID;
+    this.document = IronWeb.codec.utf8.fromBytes(response.data);
   }
 }
 
@@ -53,10 +71,13 @@ export class IronService {
     });
   }
 
-  decrypt(encryptedDocument: EncryptedDocument) {
+  decrypt(encryptedDocument: EncryptedDocument): Observable<DecryptedDocument> {
     return from(this.initp
             .then(() => {
-              return IronWeb.document.decrypt('' + encryptedDocument.id, encryptedDocument.document);
+              return IronWeb.document.decrypt('' + encryptedDocument.id, encryptedDocument.document)
+                .then((ddr) => {
+                  return new DecryptedDocument(ddr);
+                });
             }));
   }
 
@@ -117,5 +138,14 @@ export class IronService {
    */
   getUserPasscode() {
     return Promise.resolve('SAMPLE_PASSCODE');
+  }
+
+  metadata(encryptedDocument: EncryptedDocument) {
+    return from(this.initp.then(() => {
+      IronWeb.document.getMetadata('' + encryptedDocument.id)
+        .then((response) => {
+          console.log('getMetadata response', response);
+        });
+    }));
   }
 }
