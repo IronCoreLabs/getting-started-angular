@@ -1,0 +1,47 @@
+.dropdown-show {
+    display: "block"
+}
+
+.login-text {
+    font-size: 20;
+    padding: 10px 15px;
+    color: #777;
+    font-weight: 400;
+}
+
+.dropdown-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 15px;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+}
+
+.dropdown-user :hover {
+    background-color: #eee;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.user-text {
+    margin-left: 15
+}
+
+.user-name {
+    font-size: 16;
+    font-weight: 400;
+    margin-bottom: 5;
+}
+
+.user-role {
+    font-size: 14;
+    font-weight: 400;
+    color: #777;
+}
+
+chevron {color: #ccc}

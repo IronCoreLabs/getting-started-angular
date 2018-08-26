@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-avatar-hover',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./avatar-hover.component.css']
 })
 export class AvatarHoverComponent implements OnInit {
+  @Input() public src: string;
 
   constructor() { }
 
@@ -14,7 +15,7 @@ export class AvatarHoverComponent implements OnInit {
 
   computeStyle() {
     return {
-      background: 'url("assets/avatars/kirk.jpg") 0 0 no-repeat',
+      background: `url("${this.src}") 0 0 no-repeat`,
       'background-size': 'cover',
       height: '80px',
       width: '80px'

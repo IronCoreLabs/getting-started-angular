@@ -12,6 +12,7 @@ import { IronHttpInterceptor } from './services/iron/iron-http-interceptor';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { SelectUserComponent } from './components/select-user/select-user/select-user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { OrderListComponent } from './components/order-list/order-list.component
     ActiveUserComponent,
     NewOrderFormComponent,
     PaperComponent,
-    OrderListComponent
+    OrderListComponent,
+    SelectUserComponent
   ],
   imports: [
     // These are order dependent per Angular docs
