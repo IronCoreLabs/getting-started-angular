@@ -1,4 +1,4 @@
-<div class="active-user" (click)="onSelect()">
+<div class="active-user" (click)="toggleDropdown()">
   <app-avatar-hover src='{{activeUser.img}}'></app-avatar-hover>
-  <app-select-user></app-select-user>
+  <app-select-user *ngIf='isShowDropdown' ></app-select-user>
 </div>

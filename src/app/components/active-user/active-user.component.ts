@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { User } from '../../services/user/user';
 import { UserService } from '../../services/user/user.service';
 
@@ -8,14 +8,15 @@ import { UserService } from '../../services/user/user.service';
   styleUrls: ['./active-user.component.css']
 })
 export class ActiveUserComponent implements OnInit {
+  @Input() isShowDropdown = false;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  onSelect(): void {
-    console.log('ActiveUserComponent.onSelect()');
+  @Output() toggleDropdown(): void {
+    this.isShowDropdown = !this.isShowDropdown;
   }
 
   get activeUser(): User {
