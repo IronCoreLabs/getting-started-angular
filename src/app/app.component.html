@@ -5,7 +5,7 @@
         <div class="panel-sections">
             <div class="order-section">
                 <app-order-list></app-order-list>
-                <app-new-order-form></app-new-order-form>
+                <app-new-order-form *ngIf='activeUser.isAdmin'></app-new-order-form>
             </div>
         </div>
     </main>

@@ -1,6 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { User } from '../../../services/user/user';
-import { UserService } from '../../../services/user/user.service';
+import { Component, OnInit, Injectable, Output } from '@angular/core';
+import { User } from '../../services/user/user';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-select-user',
@@ -13,6 +13,11 @@ export class SelectUserComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  @Output() selectUser(user: User): void {
+    console.log('selectUser', user);
+    this.userService.active = user;
   }
 
   get users(): User[] {

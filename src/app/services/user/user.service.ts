@@ -25,14 +25,15 @@ export const REDSHIRT = '556';
 })
 export class UserService {
   private _active: User;
+  private _isChanging: Boolean;
 
-  readonly userChange: Subject<User>;
+  readonly userChanged: Subject<User>;
   readonly userChanging: Subject<User>;
   readonly users: Map<string, User>;
 
   constructor(private ironService: IronService) {
     this.users = new Map<string, User>();
-    this.users.set(KIRK, new User(KIRK, 'Kirk', kirk));
+    this.users.set(KIRK, new User(KIRK, 'Kirk', kirk, true));
     this.users.set(MCCOY, new User(MCCOY, 'McCoy', mccoy));
     this.users.set(SULU, new User(SULU, 'Sulu', sulu));
     this.users.set(CHEKOV, new User(CHEKOV, 'Chekov', chekov));
@@ -40,10 +41,11 @@ export class UserService {
     this.users.set(UHURA, new User(UHURA, 'Uhura', uhura));
     this.users.set(REDSHIRT, new User(REDSHIRT, 'Redshirt', redshirt));
 
-    this.userChange = new Subject<User>();
+    this.userChanged = new Subject<User>();
     this.userChanging = new Subject<User>();
 
     this._active = this.users[KIRK];
+    this._isChanging = false;
   }
 
   // Properties
@@ -53,9 +55,20 @@ export class UserService {
   }
 
   set active(user: User) {
-    this.userChanging.next(user);
     this._active = user;
-    this.ironService.asUser(user).then(() => this.userChange.next(user));
+    this._isChanging = true;
+    this.userChanging.next(user);
+
+    this.ironService.asUser(user)
+      .then(
+        () => {
+          this._isChanging = false;
+          this.userChanged.next(user);
+        });
+  }
+
+  get isChanging(): Boolean {
+    return this._isChanging;
   }
 
   // Methods

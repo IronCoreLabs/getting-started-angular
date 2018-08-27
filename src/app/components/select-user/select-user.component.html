@@ -1,6 +1,6 @@
 <div class='dropdown'>
     <div class='login-text'>Login As:</div>
-    <div class='dropdown-user' *ngFor='let user of users'>
+    <div class='dropdown-user' *ngFor='let user of users' (click)='selectUser(user)'>
     <div>
         <div class='user-info'>
         <app-avatar-hover src='{{user.img}}'></app-avatar-hover>
@@ -17,8 +17,7 @@
 </div>
 
 <!--
-  <div className={`${classes.dropdown} ${this.state.dropdownOpen ? classes.dropdownShow : ""}`}>{this.getDropDownMarkup()}
-</div>
+
 
 
     getDropDownMarkup() {

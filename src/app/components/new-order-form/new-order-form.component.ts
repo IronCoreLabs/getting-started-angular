@@ -1,6 +1,8 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { OrderService } from '../../services/order/order.service';
 import { Order } from '../../services/order/order';
+import { UserService } from '../../services/user/user.service';
+import { User } from '../../services/user/user';
 
 @Component({
   selector: 'app-new-order-form',
@@ -10,18 +12,21 @@ import { Order } from '../../services/order/order';
 
 @Injectable({ providedIn: 'root' })
 export class NewOrderFormComponent implements OnInit {
+  activeUser: User;
   iconClasses: string[];
   orderBody: string;
   orderTitle: string;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private userService: UserService) {
     // TODO: icon classes
     this.iconClasses = [];
     this.orderBody = '';
     this.orderTitle = '';
+    this.userService.userChanging.subscribe((user) => this.activeUser = user);
   }
 
   ngOnInit() {
+    this.activeUser = this.userService.active;
   }
 
   clear() {

@@ -15,7 +15,8 @@ export class AvatarHoverComponent implements OnInit {
 
   computeStyle() {
     return {
-      background: `url("${this.src}") 0 0 no-repeat`,
+      'background-image': `url("${this.src}")`,
+      'background-repeat': 'no-repeat',
       'background-size': 'cover',
       height: '80px',
       width: '80px'
