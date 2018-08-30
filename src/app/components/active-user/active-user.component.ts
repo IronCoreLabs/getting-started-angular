@@ -2,6 +2,9 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { User } from '../../services/user/user';
 import { UserService } from '../../services/user/user.service';
 
+/**
+ * Dropdown selector to "login" a crewmember.
+ */
 @Component({
   selector: 'app-active-user',
   templateUrl: './active-user.component.html',

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Wrapper div to apply css styling
+ */
 @Component({
   selector: 'app-paper',
   templateUrl: './paper.component.html',
@@ -15,5 +18,4 @@ export class PaperComponent implements OnInit {
   computeStyle() {
     return {};
   }
-
 }

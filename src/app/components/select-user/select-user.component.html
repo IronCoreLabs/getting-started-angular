@@ -3,7 +3,7 @@
     <div class='dropdown-user' *ngFor='let user of users' (click)='selectUser(user)'>
     <div>
         <div class='user-info'>
-        <app-avatar-hover src='{{user.img}}'></app-avatar-hover>
+        <app-avatar-hover size=60 src='{{user.img}}' iconColor='#00BCD4'></app-avatar-hover>
         <div class='user-text'>
             <div class='user-name'>{{user.name}}</div>
             <div class='user-role'>ROLE</div>
@@ -15,37 +15,3 @@
     </div>
     </div>
 </div>
-
-<!--
-
-
-
-    getDropDownMarkup() {
-        const users = Object.keys(Users)
-            .map((user) => Users[user])
-            .filter((user) => user.id !== this.props.activeUser.id)
-            .sort((a, b) => a.id > b.id);
-
-        const crewList = users.map((user) => (
-            <div key={user.id} className={classes.dropdownUser} onClick={this.changeUser.bind(this, user)}>
-                <div className={classes.userInfo}>
-                    <AvatarHoverAction src={user.img} size={60} loading={this.state.changingUserID === user.id} iconColor="#00BCD4" />
-                    <div className={classes.userText}>
-                        <div className={classes.userName}>{user.name}</div>
-                        <div className={classes.userRole}>{this.getUserRole(user)}</div>
-                    </div>
-                </div>
-                <div className={classes.chevron}>
-                    <i className="fas fa-chevron-right fa-2x" />
-                </div>
-            </div>
-        ));
-
-        return (
-            <React.Fragment>
-                <div className={classes.loginText}>Login As: </div>
-                {crewList}
-            </React.Fragment>
-        );
-    }
--->

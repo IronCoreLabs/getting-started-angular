@@ -2,6 +2,9 @@ import { Component, OnInit, Injectable, Output } from '@angular/core';
 import { User } from '../../services/user/user';
 import { UserService } from '../../services/user/user.service';
 
+/**
+ * This is the dropdown to select a user to login
+ */
 @Component({
   selector: 'app-select-user',
   templateUrl: './select-user.component.html',

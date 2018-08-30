@@ -1,8 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { OrderService } from '../../services/order/order.service';
 import { Order } from '../../services/order/order';
-import { UserService } from '../../services/user/user.service';
-import { User } from '../../services/user/user';
 
 @Component({
   selector: 'app-new-order-form',
@@ -12,23 +10,24 @@ import { User } from '../../services/user/user';
 
 @Injectable({ providedIn: 'root' })
 export class NewOrderFormComponent implements OnInit {
-  activeUser: User;
   iconClasses: string[];
   orderBody: string;
   orderTitle: string;
 
-  constructor(private orderService: OrderService, private userService: UserService) {
+  /** Construct a new NewOrderFormComponent */
+  constructor(private orderService: OrderService) {
     // TODO: icon classes
     this.iconClasses = [];
     this.orderBody = '';
     this.orderTitle = '';
-    this.userService.userChanging.subscribe((user) => this.activeUser = user);
   }
 
   ngOnInit() {
-    this.activeUser = this.userService.active;
   }
 
+  /**
+   * Clear the form
+   */
   clear() {
     this.orderBody = '';
     this.orderTitle = '';
@@ -39,26 +38,10 @@ export class NewOrderFormComponent implements OnInit {
    */
   submitNewOrder(): void {
     // TODO: Form Validation
+    // TODO: Use Angular pipes to trim
     const order = new Order(this.orderTitle.trim(), this.orderBody.trim());
+    // TODO: Discuss Is saving reference count and visual indicators
     this.orderService.create(order).subscribe();
     this.clear();
   }
-
-     /*
-    submitNewOrder() {
-      if (this.state.savingOrder || !this.state.orderTitle.trim() || !this.state.orderBody.trim()) {
-          return;
-      }
-      this.setState({savingOrder: true});
-      this.props.createOrder(
-          this.state.orderTitle.trim(),
-          this.state.orderBody.trim(),
-          () => {
-              this.setState({savingOrder: false, orderTitle: "", orderBody: ""});
-              showSnackbar("New order created successfully");
-          },
-          () => this.setState({savingOrder: false})
-      );
-  }
-  */
 }

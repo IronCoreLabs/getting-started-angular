@@ -3,7 +3,15 @@
   {this.getWarningHeader()}
 -->
 <app-paper>
-<!--
-<Paper>{this.getAwayTeamOrders()}</Paper>
--->
+  <div class='empty-order-list' *ngIf='isEmptyOrderList'>
+    <div>No orders created yet.</div>
+  </div>
+  <div class='order-row' (click)='expandRow()' *ngFor='let order of orders'>
+    <div className='order-header'>
+        <app-avatar-hover src='{{insignia}}' size=45></app-avatar-hover>
+        <div className='todo-title'>{{order.title}}</div>
+        <div className='timestamp'>date here</div>
+    </div>
+  </div>
+
 </app-paper>

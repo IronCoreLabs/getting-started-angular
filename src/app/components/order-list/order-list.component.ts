@@ -1,6 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OrderService } from '../../services/order/order.service';
 import { Order } from '../../services/order/order';
+import { UserService } from '../../services/user/user.service';
+import { IronStatus } from '../../services/iron/iron-status';
+
+// TODO: Discuss warning panel in React app, don't have it here, not sure it's
+// needed
+
+/**
+ * Simple view model to generate an Access Denied title on IronWeb.SDKErrors
+ */
+class OrderViewModel {
+    constructor(public order: Order) {
+    }
+
+    get date(): Date {
+        return this.order.date;
+    }
+
+    get message(): string {
+        return this.order.message;
+    }
+
+    get title(): string {
+        const status = this.order['__ironstatus'] as IronStatus;
+        if (!status || !status.isError) {
+            return this.order.title;
+        }
+
+        if (status.sdkError.code === 301) {
+            return 'Access Denied';
+        }
+        return status.sdkError.message;
+    }
+}
 
 @Component({
   selector: 'app-order-list',
@@ -8,68 +41,39 @@ import { Order } from '../../services/order/order';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orderList: Order[] = [];
+  @Input() orders: OrderViewModel[] = [];
+  @Input() readonly insignia = 'assets/avatars/insignia.png';
 
-  constructor(private orderService: OrderService) {
+  // Initialization
+
+  constructor(private orderService: OrderService, private userService: UserService) {
     this.orderService.newOrders$.subscribe((order) => {
-      this.orderList.push(order);
+      this.orders.push(new OrderViewModel(order));
     });
   }
 
   ngOnInit() {
-    this.orderService.list().subscribe(() => console.log());
+    this.refresh();
+    this.userService.userChanging.subscribe(() => this.refresh());
+  }
+
+  // Properties
+
+  @Input() get isEmptyOrderList(): Boolean {
+    return this.orders.length === 0;
+  }
+
+  // Methods
+
+  /**
+   * Refreshes the order list from the (mocked) back end
+   */
+  refresh() {
+    this.orders = [];
+    this.orderService.list().subscribe((result: Order[]) => {
+      console.log('orders', result);
+      this.orders = result.sort((a, b) => a.date > b.date ? 1 : -1)
+                          .map((x) => new OrderViewModel(x));
+    });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //   /**
-  //    * Get list of orders and display them as individual rows
-  //    */
-  //   getAwayTeamOrders() {
-  //     const ordersArray = Object.keys(this.props.orders)
-  //         .map((orderID) => this.props.orders[orderID])
-  //         .sort((a, b) => a.created > b.created);
-
-  //     if (ordersArray.length === 0) {
-  //         return (
-  //             <div className={classes.emptyOrderList}>
-  //                 <div>No orders created yet.</div>
-  //             </div>
-  //         );
-  //     }
-  //     return ordersArray.map((order) => {
-  //         return (
-  //             <div key={order.id} className={classes.orderRow} onClick={() => this.expandRow(order.id)}>
-  //                 <div className={classes.orderHeader}>
-  //                     <AvatarHoverAction src={insignia} size={45} />
-  //                     <div className={classes.todoTitle}>{order.title}</div>
-  //                     <div className={classes.timestamp}>{new Date(order.created).toLocaleTimeString()}</div>
-  //                 </div>
-  //                 {this.getOrderBody(order)}
-  //             </div>
-  //         );
-  //     });
-  // }
