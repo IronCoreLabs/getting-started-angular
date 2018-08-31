@@ -1,5 +1,9 @@
 import { HttpRequest } from '@angular/common/http';
 
+/**
+ * IronPolicy defines how transparent transform encryption is applied to
+ * http requests, http responses and local storage operations
+ */
 export class IronPolicy {
     readonly encrypt: Boolean;
     readonly decrypt: Boolean;
@@ -7,6 +11,8 @@ export class IronPolicy {
 
     constructor(request: HttpRequest<any>) {
         // TODO: guard
+        // TODO: object
+        // TODO: metadata driven
 
         this.encrypt = request.body && request.body.__ironpolicy;
         if (this.encrypt) {

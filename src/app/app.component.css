@@ -1,28 +1,28 @@
-.main-style {
+.loader-wrapper {
+    align-items: center;
     display: flex;
-    flex-direction: column;
+    height: 90vh;
+    justify-content: center;
+}
+
+.main-style {
     align-items: center;
     background-color: #F6F8FA;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-style h1 {
     margin: 20px;
 }
 
-.panel-sections {
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
 .order-section {
     min-width: 550px
 };
 
-loader-wrapper {
+.panel-sections {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
+    justify-content: space-around;
+    margin-top: 40px;
+    width: 100%;
 }

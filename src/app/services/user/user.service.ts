@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { IronService } from '../iron/iron.service';
-import { CHECKBOX_REQUIRED_VALIDATOR } from '@angular/forms/src/directives/validators';
 
+/**
+ * URL paths to avatar images
+ */
 const spock = 'assets/avatars/spock.jpg';
 const mccoy = 'assets/avatars/mccoy.jpg';
 const sulu = 'assets/avatars/sulu.jpg';
@@ -12,6 +14,10 @@ const chekov = 'assets/avatars/chekov.jpg';
 const kirk = 'assets/avatars/kirk.jpg';
 const uhura = 'assets/avatars/uhura.jpg';
 
+/**
+ * For demonstration purposes, we use well-known ids for
+ * our users.
+ */
 export const KIRK = '550';
 export const MCCOY = '551';
 export const SULU = '552';
@@ -27,11 +33,27 @@ export class UserService {
   private _active: User;
   private _isChanging: Boolean;
 
+  /**
+   * Use the "service-subject" pattern
+   *
+   * Announce on changes in active user ('login'), both initiation and
+   * completion.
+   */
   readonly userChanged: Subject<User>;
   readonly userChanging: Subject<User>;
+
+  /**
+   * The set of well-known users
+   */
   readonly users: Map<string, User>;
 
   constructor(private ironService: IronService) {
+
+    /**
+     * Initialize our crew members. Note that in the sample application
+     * only Kirk is an admin (which allows him to add and remove members
+     * from the away-team).
+     */
     this.users = new Map<string, User>();
     this.users.set(KIRK, new User(KIRK, 'Kirk', kirk, true));
     this.users.set(MCCOY, new User(MCCOY, 'McCoy', mccoy));
@@ -41,42 +63,74 @@ export class UserService {
     this.users.set(UHURA, new User(UHURA, 'Uhura', uhura));
     this.users.set(REDSHIRT, new User(REDSHIRT, 'Redshirt', redshirt));
 
-    this.userChanged = new Subject<User>();
-    this.userChanging = new Subject<User>();
-
     this._active = this.users[KIRK];
     this._isChanging = false;
+
+    // Service/Subject pattern
+
+    this.userChanged = new Subject<User>();
+    this.userChanging = new Subject<User>();
   }
 
   // Properties
 
+  /**
+   * Returns the active user, which changes when a login event is initiated
+   */
   get active(): User {
     return this._active;
   }
 
+  /**
+   * Set a new active user, kicking off a re-initialization of the IronCore
+   * SDK with this user's identity
+   */
   set active(user: User) {
+    // Reflect the change
     this._active = user;
     this._isChanging = true;
+
+    // Announce the user is about to change event
+    user.isLoading = true;
     this.userChanging.next(user);
 
+    // (Re-)Initialize the IronCore Service
     this.ironService.asUser(user)
       .then(
         () => {
+          // Bookkeeping
           this._isChanging = false;
+          user.isLoading = false;
+          // Announce the user has changed event
           this.userChanged.next(user);
         });
   }
 
+  /**
+   * True if we have started an initialization of the IronCore SDK as a new
+   * user, but have not yet completed
+   */
   get isChanging(): Boolean {
     return this._isChanging;
   }
 
   // Methods
 
+  /**
+   * Returns the user by ID.
+   *
+   * @param id The id of the user to get
+   */
   get(id: string): User {
     return this.users.get(id);
   }
 
+  /**
+   * Kicks off a user change event, intializing the IronCore SDK with that
+   * user's identity.
+   *
+   * @param id The user ID to set
+   */
   setActiveByID(id: string) {
     const user = this.get(id);
     if (user) {

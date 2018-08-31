@@ -7,6 +7,7 @@
                 <app-order-list></app-order-list>
                 <app-new-order-form *ngIf='activeUser.isAdmin'></app-new-order-form>
             </div>
+            <app-away-team-management *ngIf='activeUser.isAdmin'></app-away-team-management>
         </div>
     </main>
 </div>

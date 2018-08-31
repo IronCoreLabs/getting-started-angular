@@ -13,6 +13,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
+import { AwayTeamManagementComponent } from './components/away-team-management/away-team-management.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+
+// TODO: Update favicon.
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { SelectUserComponent } from './components/select-user/select-user.compon
     NewOrderFormComponent,
     PaperComponent,
     OrderListComponent,
-    SelectUserComponent
+    SelectUserComponent,
+    AwayTeamManagementComponent,
+    SnackBarComponent
   ],
   imports: [
     // These are order dependent per Angular docs
