@@ -9,7 +9,25 @@ import { IronPolicy } from './iron-policy';
  */
 @Injectable({ providedIn: 'root' })
 export class IronPolicyFactory {
-    from(request: HttpRequest<any>): IronPolicy {
-        return new IronPolicy(request);
+    public readonly bindings = new Map<string, string>();
+
+    private bindIds(policy: IronPolicy): IronPolicy {
+        return policy.bindIds(this.bindings);
+    }
+
+    from(x: any): IronPolicy {
+        return this.bindIds(this._from(x));
+    }
+
+    private _from(x: any): IronPolicy {
+        if (x instanceof HttpRequest) {
+            return new IronPolicy({request: x});
+        }
+
+        if (x.__ironpolicy instanceof IronPolicy) {
+            return x.__ironpolicy;
+        }
+
+        throw new Error(`object type for ${x} not supported`);
     }
 }

@@ -15,7 +15,8 @@ export class Utils {
         return localStorage.setItem(GROUP_ID_STORAGE_KEY, groupID);
     }
 
-    static randomInt() {
-        return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    static randomInt(n?: number) {
+        const mod: number = n ? n : Number.MAX_SAFE_INTEGER;
+        return Math.floor(Math.random() * mod);
     }
 }

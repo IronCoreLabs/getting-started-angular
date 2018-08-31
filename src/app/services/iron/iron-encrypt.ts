@@ -1,3 +1,5 @@
+import { IronPolicy } from './iron-policy';
+
 /**
  * Class decorator that makes it easy to insert transparent transform
  * encryption onto a data transfer object. Note that the decorator is "sugar,"
@@ -12,6 +14,6 @@ export function IronEncrypt(config): ClassDecorator {
       // on post and put requests. Add one to the prototype chain
       // for the decorated target class
 
-      constructor.prototype.__ironpolicy = config;
+      constructor.prototype.__ironpolicy = new IronPolicy({decorator: config});
   };
 }

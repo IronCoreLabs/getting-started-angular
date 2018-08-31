@@ -1,14 +1,15 @@
-import * as IronWeb from "@ironcorelabs/ironweb";
-import { Injectable } from "@angular/core";
-import { User } from "../user/user";
-import { from, Observable } from "rxjs";
-import { IronStatus } from "./iron-status";
+import * as IronWeb from '@ironcorelabs/ironweb';
+import { Injectable } from '@angular/core';
+import { User } from '../user/user';
+import { from, Observable } from 'rxjs';
+import { IronStatus } from './iron-status';
+import { IronPolicyFactory } from './iron-policy-factory';
 
 // TODO:
 //
 // Run this by dev to see if I'm missing something or if we need to adjust the
 // type definition in the npm package.
-declare module "@ironcorelabs/ironweb" {
+declare module '@ironcorelabs/ironweb' {
   let codec: Codec;
   let document: Document;
   let group: Group;
@@ -32,7 +33,7 @@ export class EncryptedDocument {
    */
   constructor(response?: IronWeb.EncryptedDocumentResponse) {
     this.id = response ? +response.documentID : -1;
-    this.document = response ? response.document : "";
+    this.document = response ? response.document : '';
   }
 
   // TODO: Error construction
@@ -44,8 +45,8 @@ export class EncryptedDocument {
    */
   static from(json: string): EncryptedDocument {
     return {
-      id: json["id"],
-      document: json["document"]
+      id: json['id'],
+      document: json['document']
     };
   }
 }
@@ -65,7 +66,7 @@ export class DecryptedDocument {
       this.document = IronWeb.codec.utf8.fromBytes(response.data);
     } else {
       this.id = -1;
-      this.document = "{}";
+      this.document = '{}';
     }
   }
 
@@ -88,7 +89,7 @@ export class DecryptedDocument {
  * Service pattern to wrap IronWeb, consistent with Angular best practices
  */
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class IronService {
   /**
@@ -101,7 +102,7 @@ export class IronService {
   private p: Promise<any>;
 
   /** Construct an IronService, normally from DI */
-  constructor() {
+  constructor(private ironPolicyFactory: IronPolicyFactory) {
     this.p = null;
   }
 
@@ -168,7 +169,7 @@ export class IronService {
         .then(() => {
           // Convert Number id to string id
           return IronWeb.document
-            .decrypt("" + encryptedDocument.id, encryptedDocument.document)
+            .decrypt('' + encryptedDocument.id, encryptedDocument.document)
             .then(ddr => {
               // Map the IronWeb response
               return new DecryptedDocument(ddr);
@@ -187,12 +188,12 @@ export class IronService {
    */
   encrypt(dto: any): Observable<EncryptedDocument> {
     // TODO: Guard assertions and/or strong types
-    const documentId = "" + dto.id;
+    const documentId = '' + dto.id;
     const documentData = IronWeb.codec.utf8.toBytes(JSON.stringify(dto));
 
     // Determine the group to encrypt to from the data transfer object
-    // TODO: policy should return the ACL config
-    const policy = this.getPolicy(dto);
+    // TODO: should policy return a full ACL config?
+    const policy = this.ironPolicyFactory.from(dto);
     const groupId = policy.groupId;
 
     return from(
@@ -239,13 +240,8 @@ export class IronService {
       .then(response => response.text())
       .catch(e => {
         console.log(e);
-        return "";
+        return '';
       });
-  }
-
-  // TODO: Go through a factory
-  private getPolicy(o: any) {
-    return o && o.__ironpolicy;
   }
 
   /**
@@ -253,16 +249,16 @@ export class IronService {
    */
   getUserPasscode() {
     // TODO: Comment to explain why this is not best practice
-    return Promise.resolve("SAMPLE_PASSCODE");
+    return Promise.resolve('SAMPLE_PASSCODE');
   }
 
   metadata(encryptedDocument: EncryptedDocument) {
     return from(
       this.p.then(() => {
         IronWeb.document
-          .getMetadata("" + encryptedDocument.id)
+          .getMetadata('' + encryptedDocument.id)
           .then(response => {
-            console.log("getMetadata response", response);
+            console.log('getMetadata response', response);
           });
       })
     );
