@@ -1,5 +1,5 @@
 import { HttpRequest } from '@angular/common/http';
-import { assertNotNull } from '@angular/compiler/src/output/output_ast';
+// import { assertNotNull } from '@angular/compiler/src/output/output_ast';
 
 /**
  * IronPolicy defines how transparent transform encryption is applied to

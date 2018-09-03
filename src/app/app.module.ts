@@ -15,42 +15,44 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AwayTeamManagementComponent } from './components/away-team-management/away-team-management.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { FaviconComponent } from './components/favicon/favicon.component';
 
 // TODO: Update favicon.
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    AvatarHoverComponent,
-    ActiveUserComponent,
-    NewOrderFormComponent,
-    PaperComponent,
-    OrderListComponent,
-    SelectUserComponent,
-    AwayTeamManagementComponent,
-    SnackBarComponent
-  ],
-  imports: [
-    // These are order dependent per Angular docs
-    BrowserModule,
-    FormsModule,
-    // Import HttpClientModule after BrowserModule
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {
-        dataEncapsulation: false,
-        passThruUnknownUrl: true,
-        put204: false // return entity after PUT/update
-      }
-    )
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: IronHttpInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        AvatarHoverComponent,
+        ActiveUserComponent,
+        NewOrderFormComponent,
+        PaperComponent,
+        OrderListComponent,
+        SelectUserComponent,
+        AwayTeamManagementComponent,
+        SnackBarComponent,
+        FaviconComponent
+    ],
+    imports: [
+        // These are order dependent per Angular docs
+        BrowserModule,
+        FormsModule,
+        // Import HttpClientModule after BrowserModule
+        HttpClientModule,
+        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+        // and returns simulated server responses.
+        // Remove it when a real server is ready to receive requests.
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {
+                dataEncapsulation: false,
+                passThruUnknownUrl: true,
+                put204: false // return entity after PUT/update
+            }
+        )
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: IronHttpInterceptor, multi: true }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
