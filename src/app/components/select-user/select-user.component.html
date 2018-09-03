@@ -1,17 +1,13 @@
 <div class='dropdown'>
     <div class='login-text'>Login As:</div>
     <div class='dropdown-user' *ngFor='let user of users' (click)='selectUser(user)'>
-    <div>
         <div class='user-info'>
-        <app-avatar-hover size=60 src='{{user.img}}' iconColor='#00BCD4'></app-avatar-hover>
-        <div class='user-text'>
-            <div class='user-name'>{{user.name}}</div>
-            <div class='user-role'>ROLE</div>
+            <app-avatar-hover size=45 src='{{user.img}}' iconColor='#00BCD4'></app-avatar-hover>
+            <div class="user-text">
+                <div class='user-name'>{{user.name}}</div>
+                <div class='user-role'>Role</div>
+            </div>
         </div>
-        </div>
-        <div class='chevron'>
-        <i class='fas fa-chevron-right fa-2x'></i>
-        </div>
-    </div>
+        <i class='fas fa-chevron-right fa-2x chevron'></i>
     </div>
 </div>

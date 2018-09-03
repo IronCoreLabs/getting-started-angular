@@ -1,47 +1,69 @@
+.dropdown {
+    background-color:#fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50), 0 6px 10px 0 rgba(0,0,0,0.23), 0 10px 30px 0 rgba(0,0,0,0.19);
+    display: "block";
+    padding: 20px 20px 0px 20px;
+    position: absolute;
+    right: 20px;
+    width: 320px;
+}
+
 .dropdown-show {
-    display: "block"
+    background-color: #fff;
+    display: "block",
 }
 
 .login-text {
-    font-size: 20;
-    padding: 10px 15px;
-    color: #777;
-    font-weight: 400;
+    color: #929292;
+    font-family: ProximaNova-Bold;
+    font-size: 14px;
+    padding-bottom: 10px;
 }
 
 .dropdown-user {
-    display: flex;
     align-items: center;
+    border-bottom: 1px solid rgba(151, 151, 151, .15);
+    display: flex;
     justify-content: space-between;
+    margin-left: -20px;
     padding: 7px 15px;
-    border-bottom: 1px solid #ccc;
     text-align: right;
+    width: calc(100% + 10px);
 }
 
-.dropdown-user :hover {
+.dropdown-user:hover {
     background-color: #eee;
 }
 
+.dropdown-user:hover > .chevron {
+    color:#C8C8C8;
+}
+
 .user-info {
-    display: flex;
     align-items: center;
+    display: flex;
     text-align: left;
 }
 
 .user-text {
-    margin-left: 15
+    margin-left: 15px;
 }
 
 .user-name {
-    font-size: 16;
-    font-weight: 400;
-    margin-bottom: 5;
+    color: #000;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 .user-role {
-    font-size: 14;
-    font-weight: 400;
-    color: #777;
+    color: #929292;
+    font-family: ProximaNova-Bold;
+    font-size: 14px;
 }
 
-chevron {color: #ccc}
+.chevron {
+    color: #ECECEC;
+    font-size: 30px;
+}

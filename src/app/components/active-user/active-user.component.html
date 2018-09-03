@@ -1,4 +1,2 @@
-<div class="active-user" (click)="toggleDropdown()">
-  <app-avatar-hover size=80 src='{{activeUser.img}}'></app-avatar-hover>
-  <app-select-user *ngIf='isShowDropdown' ></app-select-user>
-</div>
+<app-avatar-hover size=45 src='{{activeUser.img}}' (click)="toggleDropdown()"></app-avatar-hover>
+<app-select-user *ngIf='isShowDropdown'></app-select-user>
