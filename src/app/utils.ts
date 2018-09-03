@@ -1,4 +1,4 @@
-const GROUP_ID_STORAGE_KEY = 'ironcore-test-group';
+const GROUP_ID_STORAGE_KEY = "ironcore-test-group";
 
 export class Utils {
     /**
@@ -11,12 +11,11 @@ export class Utils {
     /**
      * Set the provided group ID within local storage
      */
-    static setTestGroup(groupID) {
+    static setTestGroup(groupID: string) {
         return localStorage.setItem(GROUP_ID_STORAGE_KEY, groupID);
     }
 
-    static randomInt(n?: number) {
-        const mod: number = n ? n : Number.MAX_SAFE_INTEGER;
-        return Math.floor(Math.random() * mod);
+    static randomInt() {
+        return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
     }
 }

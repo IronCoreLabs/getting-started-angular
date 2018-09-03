@@ -1,6 +1,6 @@
-import { IronEncrypt } from '../iron/iron-encrypt';
-import { Utils } from '../../utils';
-import { IronStatus } from '../iron/iron-status';
+import { IronEncrypt } from "../iron/iron-encrypt";
+import { Utils } from "../../utils";
+// import { IronStatus } from "../iron/iron-status";
 
 // TODO: Binding syntax
 // TODO: Decrypt routes/policy
@@ -14,11 +14,11 @@ import { IronStatus } from '../iron/iron-status';
  * the encryption policy. The encryption policy is used by the
  * IronHttpInterceptor to provide transparent transform encryption.
  */
-@IronEncrypt({groupId: '[top-secret]'})
+@IronEncrypt({ groupId: "top-secret" })
 export class Order {
     public date = new Date();
     // TODO: Move this to the decorator and define a property
-    private __ironStatus = new IronStatus();
+    //   private __ironStatus = new IronStatus();
 
     /**
      * For our simple demo example an order consists of a title and a message.
@@ -31,7 +31,11 @@ export class Order {
      * @param id An optional numeric unique primary key. Randomly generated if
      * not provided.
      */
-    constructor(public title: string, public message: string, public id?: Number) {
+    constructor(
+        public title: string,
+        public message: string,
+        public id?: number
+    ) {
         this.id = id || Utils.randomInt();
     }
 
@@ -48,10 +52,10 @@ export class Order {
      */
     static revive(json: object): Order {
         // Marshall json properties
-        const result = Object.assign(new Order('', ''), json);
+        const result = Object.assign(new Order("", ""), json);
 
         // Convert the date string to a date object
-        result.date = new Date(json['date']);
+        result.date = new Date(json["date"]);
 
         // And return the typescript type
         return result;

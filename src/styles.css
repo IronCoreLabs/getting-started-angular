@@ -54,82 +54,16 @@ table {
     border-spacing: 0;
 }
 
-#root {
+body {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-#root header {
+
+header {
     flex: 0 1 auto;
 }
-#root main {
+
+main {
     flex: 1 1 auto;
-}
-
-#initLoader {
-    position: relative;
-}
-#initLoader:before {
-    content: "";
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border-top: 10px solid #ee2e2a;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid transparent;
-    position: absolute;
-    z-index: 9;
-    top: 10px;
-    left: 10px;
-    animation: rt 1.5s infinite;
-}
-@keyframes rt {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.snackbar {
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    transition-property: opacity, top;
-    transition-duration: 0.4s;
-    font-size: 16px;
-    margin-top: 55px;
-    min-height: 14px;
-    min-width: 300px;
-    max-width: 450px;
-    position: absolute;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    line-height: 22px;
-    padding: 18px 24px;
-    top: -10px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    opacity: 0;
-}
-.snackbar-success {
-    background-color: #00c853;
-}
-.snackbar-error {
-    background-color: #d51819;
-}
-.snackbar-info {
-    background-color: #00bcd4;
-}
-.snackbar-warning {
-    background-color: #fcd92d;
-}
-.snackbar-action {
-    background: inherit;
-    display: inline-block;
-    border: none;
-    margin-left: 24px;
-    padding: 0;
 }
