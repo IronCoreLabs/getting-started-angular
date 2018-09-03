@@ -1,33 +1,33 @@
-import { Injectable } from '@angular/core';
-import { User } from './user';
-import { Subject } from 'rxjs';
-import { IronService } from '../iron/iron.service';
+import { Injectable } from "@angular/core";
+import { User } from "./user";
+import { Subject } from "rxjs";
+import { IronService } from "../iron/iron.service";
 
 /**
  * URL paths to avatar images
  */
-const spock = 'assets/avatars/spock.jpg';
-const mccoy = 'assets/avatars/mccoy.jpg';
-const sulu = 'assets/avatars/sulu.jpg';
-const redshirt = 'assets/avatars/redshirt.jpg';
-const chekov = 'assets/avatars/chekov.jpg';
-const kirk = 'assets/avatars/kirk.jpg';
-const uhura = 'assets/avatars/uhura.jpg';
+const spock = "assets/avatars/spock.jpg";
+const mccoy = "assets/avatars/mccoy.jpg";
+const sulu = "assets/avatars/sulu.jpg";
+const redshirt = "assets/avatars/redshirt.jpg";
+const chekov = "assets/avatars/chekov.jpg";
+const kirk = "assets/avatars/kirk.jpg";
+const uhura = "assets/avatars/uhura.jpg";
 
 /**
  * For demonstration purposes, we use well-known ids for
  * our users.
  */
-export const KIRK = '550';
-export const MCCOY = '551';
-export const SULU = '552';
-export const CHEKOV = '553';
-export const SPOCK = '554';
-export const UHURA = '555';
-export const REDSHIRT = '556';
+export const KIRK = "550";
+export const MCCOY = "551";
+export const SULU = "552";
+export const CHEKOV = "553";
+export const SPOCK = "554";
+export const UHURA = "555";
+export const REDSHIRT = "556";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UserService {
   private _active: User;
@@ -48,20 +48,19 @@ export class UserService {
   readonly users: Map<string, User>;
 
   constructor(private ironService: IronService) {
-
     /**
      * Initialize our crew members. Note that in the sample application
      * only Kirk is an admin (which allows him to add and remove members
      * from the away-team).
      */
     this.users = new Map<string, User>();
-    this.users.set(KIRK, new User(KIRK, 'Kirk', kirk, true));
-    this.users.set(MCCOY, new User(MCCOY, 'McCoy', mccoy));
-    this.users.set(SULU, new User(SULU, 'Sulu', sulu));
-    this.users.set(CHEKOV, new User(CHEKOV, 'Chekov', chekov));
-    this.users.set(SPOCK, new User(SPOCK, 'Spock', spock));
-    this.users.set(UHURA, new User(UHURA, 'Uhura', uhura));
-    this.users.set(REDSHIRT, new User(REDSHIRT, 'Redshirt', redshirt));
+    this.users.set(KIRK, new User(KIRK, "Kirk", kirk, true));
+    this.users.set(MCCOY, new User(MCCOY, "McCoy", mccoy));
+    this.users.set(SULU, new User(SULU, "Sulu", sulu));
+    this.users.set(CHEKOV, new User(CHEKOV, "Chekov", chekov));
+    this.users.set(SPOCK, new User(SPOCK, "Spock", spock));
+    this.users.set(UHURA, new User(UHURA, "Uhura", uhura));
+    this.users.set(REDSHIRT, new User(REDSHIRT, "Redshirt", redshirt));
 
     this._active = this.users[KIRK];
     this._isChanging = false;
@@ -95,15 +94,13 @@ export class UserService {
     this.userChanging.next(user);
 
     // (Re-)Initialize the IronCore Service
-    this.ironService.asUser(user)
-      .then(
-        () => {
-          // Bookkeeping
-          this._isChanging = false;
-          user.isLoading = false;
-          // Announce the user has changed event
-          this.userChanged.next(user);
-        });
+    this.ironService.asUser(user).then(() => {
+      // Bookkeeping
+      this._isChanging = false;
+      user.isLoading = false;
+      // Announce the user has changed event
+      this.userChanged.next(user);
+    });
   }
 
   /**

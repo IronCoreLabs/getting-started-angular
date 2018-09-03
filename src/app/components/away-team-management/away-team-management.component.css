@@ -1,38 +1,36 @@
-    header {
-        text-align: center;
-    }
+header {
+  text-align: center;
+}
 
-    section {
-        display: flex;
-    }
+section {
+  display: flex;
+}
 
-    avatarPanel {
-        padding: 20px 30px 20px;
-    }
+avatarPanel {
+  padding: 20px 30px 20px;
+}
 
-    headerText {
-        font-size: 20;
-        padding: 10;
-        text-align: center;
-    }
+headerText {
+  font-size: 20;
+  padding: 10;
+  text-align: center;
+}
 
-    avatarList {
-        width: 400;
-        display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(110px, 1fr));
-        -ms-grid-template-colums: repeat(auto-fill,minmax(110px, 1fr));
-    }
+avatarList {
+  width: 400;
+  display: grid;
+}
 
-    avatarList div {
-        margin: 5;
-    }
+avatarList div {
+  margin: 5;
+}
 
-    .empty-avatar-list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18;
-        width: 400;
-        height: 235;
-        border: 3px dashed #ccc;
-    }
+.empty-avatar-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18;
+  width: 400;
+  height: 235;
+  border: 3px dashed #ccc;
+}

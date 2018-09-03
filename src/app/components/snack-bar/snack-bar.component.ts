@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
+import { Component, OnInit } from "@angular/core";
+import { SnackBarService } from "../../services/snack-bar/snack-bar.service";
 
 /**
  * Displays a "snackbar" UI to show the user a success/info/fail message.
@@ -7,21 +7,19 @@ import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
  * amount of time
  */
 @Component({
-  selector: 'app-snack-bar',
-  templateUrl: './snack-bar.component.html',
-  styleUrls: ['./snack-bar.component.css']
+  selector: "app-snack-bar",
+  templateUrl: "./snack-bar.component.html",
+  styleUrls: ["./snack-bar.component.css"]
 })
 export class SnackBarComponent implements OnInit {
-
-  constructor(private snackBarService: SnackBarService) {
-  }
+  constructor(private snackBarService: SnackBarService) {}
 
   ngOnInit() {
-    this.snackBarService.snackBarMessage$.subscribe((message) => {
+    this.snackBarService.snackBarMessage$.subscribe(message => {
+      return message;
       // TODO: Show the message
     });
   }
-
 }
 
 /*
