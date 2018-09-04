@@ -1,16 +1,4 @@
-header {
-  text-align: center;
-}
-
-section {
-  display: flex;
-}
-
-avatarPanel {
-  padding: 20px 30px 20px;
-}
-
-headerText {
+.header-text {
   font-size: 20;
   padding: 10;
   text-align: center;
@@ -23,14 +11,4 @@ avatarList {
 
 avatarList div {
   margin: 5;
-}
-
-.empty-avatar-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18;
-  width: 400;
-  height: 235;
-  border: 3px dashed #ccc;
 }

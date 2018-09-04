@@ -1,17 +1,21 @@
-<h3 class="header-text">Away Team Orders</h3>
-<!--
-  {this.getWarningHeader()}
--->
-<app-paper>
-  <div class='empty-order-list' *ngIf='isEmptyOrderList'>
-    <div>No orders created yet.</div>
-  </div>
-  <div class='order-row' (click)='expandRow()' *ngFor='let order of orders'>
-    <div className='order-header'>
-        <app-avatar-hover src='{{insignia}}' size=45></app-avatar-hover>
-        <div className='todo-title'>{{order.title}}</div>
-        <div className='timestamp'>date here</div>
-    </div>
-  </div>
-
-</app-paper>
+<div class="order-list">
+    <h3>Decrypt an order:</h3>
+    <!--
+      {this.getWarningHeader()}
+    -->
+    <app-paper>
+        <div class='empty-order-list' *ngIf='isEmptyOrderList'>
+            <div>No orders sent yet.</div>
+        </div>
+        <div class='order-row' (click)='expandRow()' *ngFor='let order of orders'>
+            <div class="order-row-left">
+                <img class="message-avatar" src="assets/avatars/insignia.png" />
+                <div class="order-des-text">
+                    <p class='todo-title'>{{order.title}}</p>
+                    <p>id: {{order.message}}</p>
+                </div>
+            </div>
+            <i class="far fa-eye eye-icon"></i>
+        </div>
+    </app-paper>
+</div>

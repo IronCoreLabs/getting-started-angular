@@ -1,63 +1,69 @@
+.order-list {
+    padding: 30px 0;
+}
 
-    .header-text {
-        text-align: center;
-        margin-top: 25;
-    }
+.order-row {
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 7px;
+    width: 500;
+}
 
-    .list-warning {
-        max-width: 525;
-        color: #fefefe;
-        line-height: 1.125;
-        padding: 10px 15px;
-        text-align: center;
-        background-color: #00BCD4;
-        margin: 30px 0;
-    }
+.order-row:last-child {
+    border-bottom: none;
+}
 
-    .order-row {
-        width: 500;
-        padding: 15px 7px;
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid #ccc;
-        cursor: pointer;
-    }
+.order-row:hover > .eye-icon {
+    display: block;
+}
 
-    .order-row :last-child {
-        border-bottom: none;
-    }
+.eye-icon {
+    color: #BEBEBE;
+    display: none;
+    font-size: 20px;
+}
 
-    .order-row :hover {
-        background-color: #ddd;
-    }
+.order-row-left {
+    display: flex;
+    flex-direction: row;
+}
 
-    .order-header {
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
+.todo-title {
+    color: #BDBDBD;
+    font-family: ProximaNova-Bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
 
-    .todo-title {
-        font-weight: bold;
-        margin-left: 20;
-    }
+p {
+    color: #000000;
+    font-family: Monaco;
+    font-size: 12px;
+}
 
-    timestamp {
-        position: absolute;
-        right: 0;
-    }
+.order-des-text {
+    align-content: center;
+    padding-left: 20px;
+}
 
-    order-body {
-        margin-top: 20;
-        padding-left: 15;
-    }
+.empty-order-list {
+    align-items: center;
+    border: 3px dashed #ccc;
+    display: flex;
+    font-size: 18;
+    height: 235;
+    justify-content: center;
+    margin-top: 10;
+}
 
-    .empty-order-list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18;
-        height: 235;
-        border: 3px dashed #ccc;
-        margin-top: 10;
-    }
+.message-avatar {
+    border-radius: 100%;
+    cursor: pointer;
+    height: 45px;
+    overflow: hidden;
+    width: 45px;
+}
