@@ -7,6 +7,7 @@
     position: absolute;
     right: 20px;
     width: 320px;
+    z-index: 30;
 }
 
 .dropdown-show {

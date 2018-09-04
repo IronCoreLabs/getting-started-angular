@@ -1,11 +1,10 @@
 <div id="root">
     <app-header></app-header>
     <main class="main-style">
-        <h1>Welcome to the Enterprise Messaging System</h1>
         <div class="panel-sections">
             <div class="order-section">
-                <app-order-list></app-order-list>
                 <app-new-order-form *ngIf='activeUser.isAdmin'></app-new-order-form>
+                <app-order-list></app-order-list>
             </div>
             <app-away-team-management *ngIf='activeUser.isAdmin'></app-away-team-management>
         </div>

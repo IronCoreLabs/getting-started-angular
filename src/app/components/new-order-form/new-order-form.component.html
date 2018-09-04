@@ -1,45 +1,7 @@
-<h3 class="header-text">Add Away Team Order</h3>
-<app-paper>
-    <div class="order-header">
-        <div class="label">From:</div>
-        <div>Kirk</div>
-    </div>
-
-    <div class="order-header">
-        <div class="label">To:</div>
-        <div>Away Team</div>
-    </div>
-
-    <input  class="generic-input"
-            type="text"
-            placeholder="Order Title"
-            [(ngModel)]="orderTitle" />
-
-    <textarea class="textarea generic-input"
-              placeholder="Enter your order message..."
-              rows="6"
-              [(ngModel)]="orderBody">
-    </textarea>
-
-    <button class="button"
-            (click)="submitNewOrder()">
-        <i class="buttonIcon" [ngClass]="iconClasses"></i>
-        Submit Order
-    </button>
-</app-paper>
-
-
-
-
-
-<!---
-
-
-    onChange={this.updateOrderBody.bind(this)}
-    value={this.state.orderBody}
-
-        <button class={classes.button} onClick={this.submitNewOrder.bind(this)}>
-            <i class={`${classes.buttonIcon} ${iconClasses}`} />
-            Submit Order
-        </button>
--->
+<div class="new-order-form">
+    <h3 class="header-text">Encrypt an order to the away-team:</h3>
+    <input class="order-title-input" type="text" placeholder="Your Order Title..." [(ngModel)]="orderTitle" />
+    <textarea placeholder="Your order order to encrypt..." rows="6" [(ngModel)]="orderBody">
+        </textarea>
+    <button (click)="submitNewOrder()">Encrypt</button>
+</div>
