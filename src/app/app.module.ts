@@ -15,6 +15,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { AwayTeamManagementComponent } from './components/away-team-management/away-team-management.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { OrderMessageComponent } from './components/order-message/order-message.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
         OrderListComponent,
         SelectUserComponent,
         AwayTeamManagementComponent,
-        SnackBarComponent
+        SnackBarComponent,
+        OrderMessageComponent
     ],
     imports: [
         // These are order dependent per Angular docs

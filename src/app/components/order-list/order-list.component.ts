@@ -4,8 +4,7 @@ import { Order } from '../../services/order/order';
 import { UserService } from '../../services/user/user.service';
 import { IronStatus } from '../../services/iron/iron-status';
 
-// TODO: Discuss warning panel in React app, don't have it here, not sure it's
-// needed
+// TODO: Discuss warning panel in React app, don't have it here, not sure it's needed
 
 /**
  * Simple view model to generate an Access Denied title on IronWeb.SDKErrors
@@ -36,44 +35,46 @@ class OrderViewModel {
 }
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+    selector: 'app-order-list',
+    templateUrl: './order-list.component.html',
+    styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  @Input() orders: OrderViewModel[] = [];
-  @Input() readonly insignia = 'assets/avatars/insignia.png';
+    @Input() orders: OrderViewModel[] = [];
+    @Input() selectedMessage: any = null;
 
-  // Initialization
+    constructor(private orderService: OrderService, private userService: UserService) {
+        this.orderService.newOrders$.subscribe((order) => {
+            this.orders.push(new OrderViewModel(order));
+        });
+    }
 
-  constructor(private orderService: OrderService, private userService: UserService) {
-    this.orderService.newOrders$.subscribe((order) => {
-      this.orders.push(new OrderViewModel(order));
-    });
-  }
+    ngOnInit() {
+        this.refresh();
+        this.userService.userChanging.subscribe(() => this.refresh());
+    }
 
-  ngOnInit() {
-    this.refresh();
-    this.userService.userChanging.subscribe(() => this.refresh());
-  }
+    // Properties
 
-  // Properties
+    @Input() get isEmptyOrderList(): Boolean {
+        return this.orders.length === 0;
+    }
 
-  @Input() get isEmptyOrderList(): Boolean {
-    return this.orders.length === 0;
-  }
+    toggleMessage(message) {
+        const sm = this.selectedMessage;
+        sm === message.order ? this.selectedMessage = null : this.selectedMessage = message.order;
+    }
 
-  // Methods
+    // Methods
 
-  /**
-   * Refreshes the order list from the (mocked) back end
-   */
-  refresh() {
-    this.orders = [];
-    this.orderService.list().subscribe((result: Order[]) => {
-      console.log('orders', result);
-      this.orders = result.sort((a, b) => a.date > b.date ? 1 : -1)
-                          .map((x) => new OrderViewModel(x));
-    });
-  }
+    /**
+     * Refreshes the order list from the (mocked) back end
+     */
+    refresh() {
+        this.orders = [];
+        this.orderService.list().subscribe((result: Order[]) => {
+            this.orders = result.sort((a, b) => a.date > b.date ? 1 : -1)
+                .map((x) => new OrderViewModel(x));
+        });
+    }
 }
