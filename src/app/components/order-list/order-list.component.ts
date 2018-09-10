@@ -41,8 +41,7 @@ class OrderViewModel {
 })
 export class OrderListComponent implements OnInit {
     @Input() orders: OrderViewModel[] = [];
-
-    // Initialization
+    @Input() selectedMessage: any = null;
 
     constructor(private orderService: OrderService, private userService: UserService) {
         this.orderService.newOrders$.subscribe((order) => {
@@ -59,6 +58,11 @@ export class OrderListComponent implements OnInit {
 
     @Input() get isEmptyOrderList(): Boolean {
         return this.orders.length === 0;
+    }
+
+    toggleMessage(message) {
+        const sm = this.selectedMessage;
+        sm === message.order ? this.selectedMessage = null : this.selectedMessage = message.order;
     }
 
     // Methods

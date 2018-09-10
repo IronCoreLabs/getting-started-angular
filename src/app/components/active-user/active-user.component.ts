@@ -6,23 +6,23 @@ import { UserService } from '../../services/user/user.service';
  * Dropdown selector to "login" a crewmember.
  */
 @Component({
-  selector: 'app-active-user',
-  templateUrl: './active-user.component.html',
-  styleUrls: ['./active-user.component.css']
+    selector: 'app-active-user',
+    templateUrl: './active-user.component.html',
+    styleUrls: ['./active-user.component.css']
 })
 export class ActiveUserComponent implements OnInit {
-  @Input() isShowDropdown = false;
+    @Input() isShowDropdown = false;
 
-  constructor(private userService: UserService) { }
+    constructor(private userService: UserService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  @Output() toggleDropdown(): void {
-    this.isShowDropdown = !this.isShowDropdown;
-  }
+    @Output() toggleDropdown(): void {
+        this.isShowDropdown = !this.isShowDropdown;
+    }
 
-  get activeUser(): User {
-    return this.userService.active;
-  }
+    get activeUser(): User {
+        return this.userService.active;
+    }
 }

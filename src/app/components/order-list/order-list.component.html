@@ -1,21 +1,21 @@
 <div class="order-list">
     <h3>Decrypt an order:</h3>
-    <!--
-      {this.getWarningHeader()}
-    -->
     <app-paper>
         <div class='empty-order-list' *ngIf='isEmptyOrderList'>
             <div>No orders sent yet.</div>
         </div>
-        <div class='order-row' (click)='expandRow()' *ngFor='let order of orders'>
-            <div class="order-row-left">
-                <img class="message-avatar" src="assets/avatars/insignia.png" />
-                <div class="order-des-text">
-                    <p class='todo-title'>{{order.title}}</p>
-                    <p>id: {{order.message}}</p>
+        <div (click)='toggleMessage(order)' *ngFor='let order of orders'>
+            <div class='order-row'>
+                <div class="order-row-left">
+                    <img class="message-avatar" src="assets/avatars/insignia.png" />
+                    <div class="order-description-text">
+                        <p class='todo-title'>{{order.title}}</p>
+                        <p>id: {{order.id}}</p>
+                    </div>
                 </div>
+                <i class="far fa-eye eye-icon"></i>
             </div>
-            <i class="far fa-eye eye-icon"></i>
+            <app-order-message *ngIf='this.selectedMessage && this.selectedMessage.message === order.message' message='{{order.message}}'></app-order-message>
         </div>
     </app-paper>
 </div>

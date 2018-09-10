@@ -4,17 +4,14 @@
 
 .order-row {
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #F2F2F2;
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    height: 25px;
     justify-content: space-between;
     padding: 15px 7px;
-    width: 500;
-}
-
-.order-row:last-child {
-    border-bottom: none;
+    width: 500px;
 }
 
 .order-row:hover > .eye-icon {
@@ -45,7 +42,7 @@ p {
     font-size: 12px;
 }
 
-.order-des-text {
+.order-description-text {
     align-content: center;
     padding-left: 20px;
 }
@@ -63,7 +60,7 @@ p {
 .message-avatar {
     border-radius: 100%;
     cursor: pointer;
-    height: 45px;
+    height: 35px;
     overflow: hidden;
-    width: 45px;
+    width: 35px;
 }
