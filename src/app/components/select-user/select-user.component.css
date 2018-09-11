@@ -38,7 +38,7 @@
 }
 
 .dropdown-user:hover > .chevron {
-    color:#C8C8C8;
+    color:#BBB;
 }
 
 .user-info {
@@ -65,6 +65,6 @@
 }
 
 .chevron {
-    color: #ECECEC;
+    color: #E0E0E0;
     font-size: 30px;
 }
