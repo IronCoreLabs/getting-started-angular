@@ -1,0 +1,31 @@
+<i (click)='toggleTeamManagementMenu()' class="fas fa-bars"></i>
+<section *ngIf="this.teamManagementMenuOpen">
+    <div class='menu-header'>
+        <h2>Group Management</h2>
+        <i class="main-close fas fa-times" (click)='toggleTeamManagementMenu()'></i>
+    </div>
+    <div class='main-content'>
+        <h3>Away-Team Group Members</h3>
+        <div (click)='removeMember(teamMember)' *ngFor='let teamMember of awayTeam' class='user-row'>
+            <div class='user-left'>
+                <app-avatar-hover size=50 src={{teamMember.img}}></app-avatar-hover>
+                <div class='user-description'>
+                    <p class='user-name'>{{teamMember.name}}</p>
+                    <p class='user-role'>Away-Team</p>
+                </div>
+            </div>
+            <i class="fas fa-times"></i>
+        </div>
+        <h3>Starship Enterprise Crew</h3>
+        <div class='user-row' *ngFor='let crew of crewMembers' (click)='addMember(crew)'>
+            <div class='user-left'>
+                <app-avatar-hover size=50 src={{crew.img}}></app-avatar-hover>
+                <div class='user-description'>
+                    <p class='user-name'>{{crew.name}}</p>
+                    <p class='user-role'>Starship Enterprise</p>
+                </div>
+            </div>
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+</section>

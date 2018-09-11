@@ -1,0 +1,97 @@
+section {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.50);
+    display: relative;
+    height: 100vh;
+    left: 0;
+    min-width: 300px;
+    max-width: 430px;
+    position: fixed;
+    top: 0;
+    width: 50%;
+    z-index:  20;
+}
+
+h2 {
+    font-family: ProximaNova-Bold;
+    color: #000000;
+}
+
+h3 {
+    color: #929292;
+    font-family: ProximaNova-Bold;
+    padding: 20px 0;
+}
+
+.menu-header {
+    align-items: center;
+    background-color: #F6F8FA;
+    display: flex;
+    flex-direction: row;
+    font-size: 28px;
+    justify-content: space-between;
+    left: 0;
+    padding: 22px;
+    top: 0;
+}
+
+.main-content {
+    padding: 22px;
+}
+
+.user-row {
+    align-items: center;
+    border-bottom: 1px solid #F2F2F2;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -22px;
+    padding: 8px 22px;
+}
+
+.user-name {
+    color: #000000;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    padding-bottom: 4px;
+}
+
+.user-role {
+    color: #929292;
+    font-family: ProximaNova-Bold;
+    font-size: 14px;
+}
+
+.user-left {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-description {
+    padding-left: 20px;
+}
+
+.fas {
+    color: #E0E0E0;
+}
+
+.user-row:hover {
+    background-color: #eee;
+}
+
+.user-row:hover > .fas {
+    color:#BBB;
+}
+
+.main-close {
+    color:#444;
+}
+
+.main-close:hover {
+    color:#2A2A2A;
+}
+
+.fa-bars {
+    color: black;
+    padding-right: 25px;
+}

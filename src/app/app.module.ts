@@ -13,9 +13,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
-import { AwayTeamManagementComponent } from './components/away-team-management/away-team-management.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { OrderMessageComponent } from './components/order-message/order-message.component';
+import { TeamManagementToggleComponent } from './components/team-management-toggle/team-management-toggle.component';
 
 @NgModule({
     declarations: [
@@ -27,9 +27,9 @@ import { OrderMessageComponent } from './components/order-message/order-message.
         PaperComponent,
         OrderListComponent,
         SelectUserComponent,
-        AwayTeamManagementComponent,
         SnackBarComponent,
-        OrderMessageComponent
+        OrderMessageComponent,
+        TeamManagementToggleComponent
     ],
     imports: [
         // These are order dependent per Angular docs
