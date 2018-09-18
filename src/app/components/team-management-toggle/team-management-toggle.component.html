@@ -1,8 +1,9 @@
-<i (click)='toggleTeamManagementMenu()' class="fas fa-bars"></i>
+<div (click)='this.toggleTeamManagementMenu()' class='menu-button'>Add member</div>
+<i class="fas fa-plus open-icon" (click)='this.toggleTeamManagementMenu()'></i>
 <section *ngIf="this.teamManagementMenuOpen">
     <div class='menu-header'>
         <h2>Group Management</h2>
-        <i class="main-close fas fa-times" (click)='toggleTeamManagementMenu()'></i>
+        <i class="fas fa-times" (click)='this.toggleTeamManagementMenu()'></i>
     </div>
     <div class='main-content'>
         <h3>Away-Team Group Members</h3>

@@ -3,16 +3,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* prettier-ignore */
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 html,
 body {
@@ -50,25 +50,20 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 body {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-
 header {
     flex: 0 1 auto;
 }
-
 main {
     flex: 1 1 auto;
 }
-
 input, textarea, button {
     outline: none;
 }
-
 input, textarea{
     border: 1px solid #D9D9D9;
     border-left: 3px solid #F44336;
@@ -78,7 +73,6 @@ input, textarea{
     padding: 7px;
     width: 100%;
 }
-
 button {
     background: #0ABFD6;
     border: 1px solid #FFFFFF;
@@ -90,7 +84,6 @@ button {
     padding: 15px 30px;
     text-align: center;
 }
-
 h3 {
     color: #BDBDBD;
     font-family: Monaco;
