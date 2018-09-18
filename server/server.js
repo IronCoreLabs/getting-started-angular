@@ -5,8 +5,8 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 
 // TODO: Print very informative messages if these are missing
-const ironCoreConfig = require("../ironcore-config.json");
-const privateKey = fs.readFileSync(path.join(__dirname, "../private.key"), "utf8");
+const ironCoreConfig = require("./ironcore-config.json");
+const privateKey = fs.readFileSync(path.join(__dirname, "./private.key"), "utf8");
 
 /**
  * Create a Node server which is reponsible for generating and signing valid JWTs. Supports
