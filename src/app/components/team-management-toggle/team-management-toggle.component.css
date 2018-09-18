@@ -1,9 +1,9 @@
 section {
-    background: #FFFFFF;
+    background: #FFF;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.50);
     display: relative;
     height: 100vh;
-    left: 0;
+    right: 0;
     min-width: 300px;
     max-width: 430px;
     position: fixed;
@@ -21,6 +21,18 @@ h3 {
     color: #929292;
     font-family: ProximaNova-Bold;
     padding: 20px 0;
+}
+
+.menu-button {
+    color: #0ABFD6;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    letter-spacing: -0.14px;
+    text-align: right;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-right: 30px;
+    letter-spacing: .05em;
 }
 
 .menu-header {
@@ -94,4 +106,29 @@ h3 {
 .fa-bars {
     color: black;
     padding-right: 25px;
+}
+
+.open-icon {
+    color: black;
+    opacity: .6;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 16px;
+    display: none;
+    margin-right: 5px;
+}
+
+.open-icon:hover {
+    opacity: 1 !important;
+    background: rgba(10, 191, 214, .1);
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-button {
+        display: none;
+    }
+    .open-icon {
+        display: block;
+    }
 }

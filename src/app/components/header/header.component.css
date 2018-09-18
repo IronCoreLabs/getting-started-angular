@@ -2,14 +2,21 @@ header {
     align-items: center;
     color: #8F8F8F;
     display: flex;
-    font-size: 19.5px;
     font-weight: 400;
     justify-content: space-between;
     padding: 10px 30px;
 }
 
 h1 {
-    margin: 0;
+    font-size: 22px;
+    letter-spacing: .4px;
+}
+
+.iron-title {
+    font-family: ProximaNova-Bold;
+    color: black;
+    text-transform: uppercase;
+    padding-right: 10px;
 }
 
 img {
@@ -20,4 +27,10 @@ img {
     align-items: center;
     display: flex;
     flex-direction: row;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

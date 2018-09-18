@@ -1,0 +1,39 @@
+p {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #BDBDBD;
+    text-align: right;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    border-bottom-color: rgb(218, 220, 224);
+    border-radius: 8px;
+    border: 1px solid rgb(218, 220, 224);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    max-height: 48px;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+
+section:hover {
+    border: 1px solid #0ABFD6;
+    background: rgba(10, 191, 214, .1);
+}
+
+section:active {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+
+}
+
+.user-description {
+    margin-right: 15px;
+}
+
+.user-name {
+    font-family: ProximaNova-Bold;
+    color: #000000;
+    padding-top: 4px;
+}

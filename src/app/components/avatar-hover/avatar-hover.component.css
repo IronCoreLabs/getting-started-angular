@@ -5,7 +5,6 @@
 }
 
 .overlay {
-    background: rgba(0,0,0,0.7);
     text-align: center;
     height: 100%;
     display: flex;
@@ -13,10 +12,6 @@
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.overlay-hover:hover {
-    opacity: 0.75;
 }
 
 .overlay-loading {

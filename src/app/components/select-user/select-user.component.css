@@ -5,6 +5,7 @@
     display: "block";
     padding: 20px 20px 0px 20px;
     position: absolute;
+    top: 65px !important;
     right: 20px;
     width: 320px;
     z-index: 30;

@@ -1,8 +1,10 @@
 <header>
     <div class="title-container">
-        <app-team-management-toggle *ngIf='activeUser.isAdmin'></app-team-management-toggle>
-        <img src="assets/media/iron-logo.svg" height="50" width="80" alt="ironcore-logo" />
+        <h1 class='iron-title'>Iron</h1>
         <h1>Angular</h1>
     </div>
-    <app-active-user></app-active-user>
+    <div class='right-section'>
+        <app-team-management-toggle *ngIf='activeUser.isAdmin'></app-team-management-toggle>
+        <app-active-user></app-active-user>
+    </div>
 </header>
