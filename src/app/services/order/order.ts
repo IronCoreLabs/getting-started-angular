@@ -14,7 +14,7 @@ import { Utils } from "../../utils";
  * the encryption policy. The encryption policy is used by the
  * IronHttpInterceptor to provide transparent transform encryption.
  */
-@IronEncrypt({ groupId: "top-secret" })
+@IronEncrypt({ groupId: "[top-secret]" })
 export class Order {
     public date = new Date();
     // TODO: Move this to the decorator and define a property
