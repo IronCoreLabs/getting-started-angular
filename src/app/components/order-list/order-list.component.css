@@ -82,3 +82,21 @@ p {
 .order-message {
     margin: 30px;
 }
+
+.decrypt-error {
+    background: #FDDC3B;
+    color: black;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    height: 235;
+    justify-content: center;
+    margin-top: 10;
+    padding: 20px 0;
+    font-family: Monaco;
+    font-size: 13px;
+}
+
+.fa-exclamation-triangle {
+    padding-right: 10px;
+}
