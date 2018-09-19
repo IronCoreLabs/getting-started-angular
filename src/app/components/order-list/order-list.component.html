@@ -14,6 +14,10 @@
                 </div>
                 <i class="far fa-eye eye-icon"></i>
             </div>
+            <div class='decrypt-error' *ngIf='!order.message'>
+                <i class="fas fa-exclamation-triangle"></i>
+                You are not authorized to view decrypted message.
+            </div>
             <p class="order-message" *ngIf='this.selectedMessage && this.selectedMessage === order.message'>{{order.message}}</p>
         </div>
     </div>
