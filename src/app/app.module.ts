@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { AvatarHoverComponent } from './components/avatar-hover/avatar-hover.component';
 import { ActiveUserComponent } from './components/active-user/active-user.component';
 import { NewOrderFormComponent } from './components/new-order-form/new-order-form.component';
-import { PaperComponent } from './components/paper/paper.component';
 import { IronHttpInterceptor } from './services/iron/iron-http-interceptor';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
@@ -24,7 +23,6 @@ import { TeamManagementToggleComponent } from './components/team-management-togg
         AvatarHoverComponent,
         ActiveUserComponent,
         NewOrderFormComponent,
-        PaperComponent,
         OrderListComponent,
         SelectUserComponent,
         SnackBarComponent,
