@@ -27,22 +27,19 @@ export class AppComponent implements OnInit {
 
         // Subscribe to changes in the active user, this fires
         // when the change initiates
-        this.userService.userChanging.subscribe((user) => {
-            this._activeUser = user;
-        });
+        this.userService.userChanging.subscribe((user) => this._activeUser = user);
 
         // Subscribe to changed active users, this fires
         // when the change completes
-        this.userService.userChanged.subscribe((user) => {
-            this._activeUser = user;
-        });
+        this.userService.userChanged.subscribe((user) => this._activeUser = user);
     }
 
     /**
      * @description @Input property for active user
      * @returns Returns the active (logged in) user
      */
-    @Input() get activeUser(): User {
+    @Input()
+    get activeUser(): User {
         return this._activeUser;
     }
 }

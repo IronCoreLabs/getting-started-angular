@@ -7,14 +7,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { AvatarHoverComponent } from './components/avatar-hover/avatar-hover.component';
 import { ActiveUserComponent } from './components/active-user/active-user.component';
 import { NewOrderFormComponent } from './components/new-order-form/new-order-form.component';
-import { PaperComponent } from './components/paper/paper.component';
 import { IronHttpInterceptor } from './services/iron/iron-http-interceptor';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
-import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { OrderMessageComponent } from './components/order-message/order-message.component';
 import { TeamManagementToggleComponent } from './components/team-management-toggle/team-management-toggle.component';
 
 @NgModule({
@@ -24,11 +21,8 @@ import { TeamManagementToggleComponent } from './components/team-management-togg
         AvatarHoverComponent,
         ActiveUserComponent,
         NewOrderFormComponent,
-        PaperComponent,
         OrderListComponent,
         SelectUserComponent,
-        SnackBarComponent,
-        OrderMessageComponent,
         TeamManagementToggleComponent
     ],
     imports: [

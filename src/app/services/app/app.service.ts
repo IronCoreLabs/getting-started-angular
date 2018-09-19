@@ -5,8 +5,6 @@ import * as Users from '../user/user.service';
 import { IronPolicyFactory } from '../iron/iron-policy-factory';
 import { Utils } from '../../utils';
 
-// const GROUP_ID_STORAGE_KEY = 'ironcore-test-group';
-
 @Injectable({
     providedIn: 'root'
 })
@@ -23,9 +21,8 @@ export class AppService {
     * Creates a random test group to use for the demo.
     */
     private getTestGroupDetails() {
-        return this.ironService.createGroup({ groupName: `top-secret-${Utils.randomInt()}` }).then((group) => {
-            return group;
-        });
+        const groupName = `top-secret-${Utils.randomInt()}`;
+        return this.ironService.createGroup({ groupName }).then((group) => { return group; });
     }
 
     /**

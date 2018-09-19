@@ -4,8 +4,6 @@ import { Order } from '../../services/order/order';
 import { UserService } from '../../services/user/user.service';
 import { IronStatus } from '../../services/iron/iron-status';
 
-// TODO: Discuss warning panel in React app, don't have it here, not sure it's needed
-
 /**
  * Simple view model to generate an Access Denied title on IronWeb.SDKErrors
  */
@@ -41,7 +39,7 @@ class OrderViewModel {
 })
 export class OrderListComponent implements OnInit {
     @Input() orders: OrderViewModel[] = [];
-    @Input() selectedMessage: any = null;
+    @Input() selectedMessage: null | string = null;
 
     constructor(private orderService: OrderService, private userService: UserService) {
         this.orderService.newOrders$.subscribe((order) => {
@@ -60,9 +58,8 @@ export class OrderListComponent implements OnInit {
         return this.orders.length === 0;
     }
 
-    toggleMessage(message) {
-        const sm = this.selectedMessage;
-        sm === message.order ? this.selectedMessage = null : this.selectedMessage = message.order;
+    toggleMessage(row) {
+        this.selectedMessage = this.selectedMessage === row.order.message ? null : row.order.message;
     }
 
     // Methods
