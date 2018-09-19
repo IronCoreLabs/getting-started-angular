@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { User } from "../../services/user/user";
-// import { AwayTeamService } from "../../services/away-team/away-team.service";
 import * as Users from "../../services/user/user.service";
 import { AwayTeamService } from '../../services/away-team/away-team.service';
 import { AwayTeamMember } from "../../services/away-team/away-team-member";

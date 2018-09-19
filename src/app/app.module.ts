@@ -12,8 +12,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data-service.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
-import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { OrderMessageComponent } from './components/order-message/order-message.component';
 import { TeamManagementToggleComponent } from './components/team-management-toggle/team-management-toggle.component';
 
 @NgModule({
@@ -25,8 +23,6 @@ import { TeamManagementToggleComponent } from './components/team-management-togg
         NewOrderFormComponent,
         OrderListComponent,
         SelectUserComponent,
-        SnackBarComponent,
-        OrderMessageComponent,
         TeamManagementToggleComponent
     ],
     imports: [

@@ -47,7 +47,7 @@
 }
 
 p {
-    color: #000000;
+    color: #000;
     font-family: Monaco;
     font-size: 12px;
 }
@@ -59,12 +59,16 @@ p {
 
 .empty-order-list {
     align-items: center;
-    border: 3px dashed #ccc;
+    border: 1px dashed #ccc;
     display: flex;
     font-size: 18;
     height: 235;
     justify-content: center;
     margin-top: 10;
+    padding: 20px 0;
+    font-family: Monaco;
+    font-size: 13px;
+    color: #CCC;
 }
 
 .message-avatar {
@@ -73,4 +77,8 @@ p {
     height: 35px;
     overflow: hidden;
     width: 35px;
+}
+
+.order-message {
+    margin: 30px;
 }

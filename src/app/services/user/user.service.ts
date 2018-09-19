@@ -48,6 +48,7 @@ export class UserService {
     readonly users: Map<string, User>;
 
     constructor(private ironService: IronService) {
+        const s = "Starship Enterprise";
         /**
          * Initialize our crew members. Note that in the sample application
          * only Kirk is an admin (which allows him to add and remove members
@@ -55,12 +56,12 @@ export class UserService {
          */
         this.users = new Map<string, User>();
         this.users.set(KIRK, new User(KIRK, "Kirk", kirk, "Starship Captain", true));
-        this.users.set(MCCOY, new User(MCCOY, "McCoy", mccoy, "Starship Enterprise"));
-        this.users.set(SULU, new User(SULU, "Sulu", sulu, "Starship Enterprise"));
-        this.users.set(CHEKOV, new User(CHEKOV, "Chekov", chekov, "Starship Enterprise"));
-        this.users.set(SPOCK, new User(SPOCK, "Spock", spock, "Starship Enterprise"));
-        this.users.set(UHURA, new User(UHURA, "Uhura", uhura, "Starship Enterprise"));
-        this.users.set(REDSHIRT, new User(REDSHIRT, "Redshirt", redshirt, "Starship Enterprise"));
+        this.users.set(MCCOY, new User(MCCOY, "McCoy", mccoy, s));
+        this.users.set(SULU, new User(SULU, "Sulu", sulu, s));
+        this.users.set(CHEKOV, new User(CHEKOV, "Chekov", chekov, s));
+        this.users.set(SPOCK, new User(SPOCK, "Spock", spock, s));
+        this.users.set(UHURA, new User(UHURA, "Uhura", uhura, s));
+        this.users.set(REDSHIRT, new User(REDSHIRT, "Redshirt", redshirt, s));
 
         this._active = this.users[KIRK];
         this._isChanging = false;

@@ -18,7 +18,8 @@ export class ActiveUserComponent implements OnInit {
     ngOnInit() {
     }
 
-    @Output() toggleDropdown(): void {
+    @Output()
+    toggleDropdown(): void {
         this.isShowDropdown = !this.isShowDropdown;
     }
 

@@ -1,4 +1,3 @@
 export class AwayTeamMember {
-    constructor(public id: Number) {
-    }
+    constructor(public id: Number) { }
 }

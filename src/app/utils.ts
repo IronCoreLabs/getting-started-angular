@@ -9,12 +9,8 @@ export class Utils {
     }
 
     /**
-     * Set the provided group ID within local storage
-     */
-    static setTestGroup(groupID: string) {
-        return localStorage.setItem(GROUP_ID_STORAGE_KEY, groupID);
-    }
-
+    * Create a new random number
+    */
     static randomInt() {
         return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
     }

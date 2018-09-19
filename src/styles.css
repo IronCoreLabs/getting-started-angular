@@ -75,18 +75,22 @@ input, textarea{
 }
 button {
     background: #0ABFD6;
-    border: 1px solid #FFFFFF;
+    border: 2px solid #FFF;
     border-radius: 3px;
-    color: #FFFFFF;
+    color: #FFF;
     font-family: ProximaNova-Light;
     font-size: 16px;
     letter-spacing: .05em;
     padding: 15px 30px;
     text-align: center;
 }
+button:hover {
+    background: transparent;
+    border: 2px solid #0ABFD6;
+    color: #0ABFD6;
+}
 h3 {
     color: #BDBDBD;
-    font-family: Monaco;
     font-size: 16px;
     letter-spacing: -0.4px;
     margin-bottom: 20px;
