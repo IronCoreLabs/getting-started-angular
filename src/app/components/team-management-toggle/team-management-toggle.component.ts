@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { User } from "../../services/user/user";
-import { AwayTeamService } from "../../services/away-team/away-team.service";
+// import { AwayTeamService } from "../../services/away-team/away-team.service";
 import * as Users from "../../services/user/user.service";
-
+import { AwayTeamService } from '../../services/away-team/away-team.service';
+import { AwayTeamMember } from "../../services/away-team/away-team-member";
 /**
  * Allows for the administration of the away team by listing crew members
  * and away team members
@@ -21,16 +22,21 @@ export class TeamManagementToggleComponent implements OnInit {
 
     constructor(
         private userService: Users.UserService,
-        private awayTeamService: AwayTeamService
+        private awayTeamService: AwayTeamService,
     ) { }
 
     ngOnInit() {
-        this._awayTeam = new Map<string, User>();
         this._crewMembers = new Map<string, User>(this.userService.users);
         this._crewMembers.delete(Users.KIRK);
+        this._awayTeam = new Map<string, User>();
+
+        this.awayTeamService.list()
+            .subscribe(values => values.map((awayTeamMember: AwayTeamMember) => {
+                this._awayTeam.set('' + awayTeamMember.id, this.userService.get('' + awayTeamMember.id));
+                this._crewMembers.delete('' + awayTeamMember.id);
+            }));
 
         this.awayTeamService.memberAdded$.subscribe();
-
         this.awayTeamService.memberRemoved$.subscribe();
     }
 
@@ -42,7 +48,7 @@ export class TeamManagementToggleComponent implements OnInit {
     addMember(member: User) {
         this._awayTeam.set(member.id, member);
         this._crewMembers.delete(member.id);
-
+        member.role = !member.isAdmin ? "Away Team" : "Starship Captain";
         this.awayTeamService.add(member).subscribe();
     }
 
@@ -68,6 +74,7 @@ export class TeamManagementToggleComponent implements OnInit {
     removeMember(member: User) {
         this._crewMembers.set(member.id, member);
         this._awayTeam.delete(member.id);
+        member.role = !member.isAdmin ? "Starship Enterprise" : "Starship Captain";
         this.awayTeamService.remove(member).subscribe();
     }
 }
