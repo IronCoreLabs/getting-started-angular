@@ -49,14 +49,13 @@ export class IronHttpInterceptor implements HttpInterceptor {
                 );
         }
 
-        // if policy, decrypt the response on the way back in
         if (policy.decrypt) {
             return next.handle(req)
                 .pipe(
                     tap((evt) => this.trace('pre-decrypt', policy, req, evt)),
                     switchMap((evt) => this.decrypt(evt)),
                     tap((devt) => this.trace('post-decrypt', devt))
-                );
+                )
         }
 
         // Pass through, nothing to do but chain to next
@@ -65,24 +64,40 @@ export class IronHttpInterceptor implements HttpInterceptor {
         );
     }
 
+    private isDecryptable(response: HttpResponse<any>): boolean {
+        if (!response || !response.body) {
+            return false;
+        }
+
+        if (response.body instanceof Array) {
+            const list = response.body as any[];
+            return list.every((item) => EncryptedDocument.is(item));
+        }
+
+        return EncryptedDocument.is(response.body);
+    }
+
     /**
      * Decrypt HttpResponse events as either a JSON object (GET /ID) or JSON
      * Array (GET /)
      * @param evt
      */
     private decrypt(evt: HttpEvent<any>): Observable<HttpEvent<any>> {
-        // we only decrypt HttpResponses
+        // peek into the payload to see if it's an encrypted document
         const response = evt as HttpResponse<any>;
-        if (!response || !response.body) {
+        if (!this.isDecryptable(response)) {
+            this.trace('not decryptable')
             return of(evt);
         }
 
         // we may need to decrypt a list of encrypted documents (GET /)
         if (response.body instanceof Array) {
+            this.trace('decrypting a list');
             return this.decryptList(response);
         }
 
         // If not an array, then it's just one encryted document (GET /ID)
+        this.trace('decrypting an item');
         return this.decryptItem(response);
     }
 

@@ -44,6 +44,14 @@ export class EncryptedDocument {
             document: json['document']
         };
     }
+
+    static is(json: any): boolean {
+        const s = json as string;
+        if (!s) {
+            return false;
+        }
+        return s['id'] && s['document'];
+    }
 }
 
 /**
@@ -234,6 +242,7 @@ export class IronService {
         return fetch(`http://localhost:3001/generateJWT?userID=${userID}`)
             .then(response => response.text())
             .catch(e => {
+                // tslint:disable-next-line:no-console
                 console.log(e);
                 return '';
             });
@@ -253,6 +262,7 @@ export class IronService {
                 IronWeb.document
                     .getMetadata('' + encryptedDocument.id)
                     .then(response => {
+                        // tslint:disable-next-line:no-console
                         console.log('getMetadata response', response);
                     });
             })

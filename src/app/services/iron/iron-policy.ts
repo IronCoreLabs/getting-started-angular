@@ -1,5 +1,4 @@
 import { HttpRequest } from '@angular/common/http';
-// import { assertNotNull } from '@angular/compiler/src/output/output_ast';
 
 /**
  * IronPolicy defines how transparent transform encryption is applied to
@@ -31,7 +30,7 @@ export class IronPolicy {
                 return;
             }
 
-            this.decrypt = request.url === 'api/order';
+            this.decrypt = true; // auto-detects encrypted payload
         }
     }
 
