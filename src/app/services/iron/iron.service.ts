@@ -229,32 +229,6 @@ export class IronService {
         });
     }
 
-<<<<<<< HEAD
-    /**
-     * Request a signed JWT from the server for the current project and segment.
-     */
-    getJWT(userID) {
-        // TODO: Catch and gracefully handle invalid JWT
-        // TODO: See if we can eliminate node server dependency
-        return fetch(`http://localhost:3001/generateJWT?userID=${userID}`)
-            .then(response => response.text())
-            .catch(e => {
-                // tslint:disable-next-line:no-console
-                console.log(e);
-                return '';
-            });
-    }
-
-    /**
-     * Mocked out method to get a users passcode. Fixed for now for PoC purposes.
-     */
-    getUserPasscode() {
-        // TODO: Comment to explain why this is not best practice
-        return Promise.resolve('SAMPLE_PASSCODE');
-    }
-
-=======
->>>>>>> identity-provider
     metadata(encryptedDocument: EncryptedDocument) {
         return from(
             this.p.then(() => {
