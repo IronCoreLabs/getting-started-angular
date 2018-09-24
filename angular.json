@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ironcore-getting-started-angular": {
+    "getting-started-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ironcore-getting-started-angular",
+            "outputPath": "dist/getting-started-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -51,18 +51,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ironcore-getting-started-angular:build"
+            "browserTarget": "getting-started-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ironcore-getting-started-angular:build:production"
+              "browserTarget": "getting-started-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ironcore-getting-started-angular:build"
+            "browserTarget": "getting-started-angular:build"
           }
         },
         "test": {
@@ -96,7 +96,7 @@
         }
       }
     },
-    "ironcore-getting-started-angular-e2e": {
+    "getting-started-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -104,11 +104,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ironcore-getting-started-angular:serve"
+            "devServerTarget": "getting-started-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ironcore-getting-started-angular:serve:production"
+              "devServerTarget": "getting-started-angular:serve:production"
             }
           }
         },
@@ -124,5 +124,5 @@
       }
     }
   },
-  "defaultProject": "ironcore-getting-started-angular"
+  "defaultProject": "getting-started-angular"
 }
