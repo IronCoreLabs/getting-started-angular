@@ -18,12 +18,11 @@ import { IronPolicyFactory } from './iron-policy-factory';
  */
 @Injectable()
 export class IronHttpInterceptor implements HttpInterceptor {
-    private isTracing = false;
+    // tslint:disable-next-line:no-console
+    traceFn = (args) => console.log(args);
 
-    // TODO: Accept an external trace function
     // TODO: Consider encryption and decryption subject events
     constructor(private iron: IronService, private policyFactory: IronPolicyFactory) {
-        this.isTracing = true;
     }
 
     /**
@@ -49,7 +48,6 @@ export class IronHttpInterceptor implements HttpInterceptor {
                 );
         }
 
-        // if policy, decrypt the response on the way back in
         if (policy.decrypt) {
             return next.handle(req)
                 .pipe(
@@ -65,24 +63,40 @@ export class IronHttpInterceptor implements HttpInterceptor {
         );
     }
 
+    private isDecryptable(response: HttpResponse<any>): boolean {
+        if (!response || !response.body) {
+            return false;
+        }
+
+        if (response.body instanceof Array) {
+            const list = response.body as any[];
+            return list.every((item) => EncryptedDocument.isDecryptable(item));
+        }
+
+        return EncryptedDocument.isDecryptable(response.body);
+    }
+
     /**
      * Decrypt HttpResponse events as either a JSON object (GET /ID) or JSON
      * Array (GET /)
      * @param evt
      */
     private decrypt(evt: HttpEvent<any>): Observable<HttpEvent<any>> {
-        // we only decrypt HttpResponses
+        // peek into the payload to see if it's an encrypted document
         const response = evt as HttpResponse<any>;
-        if (!response || !response.body) {
+        if (!this.isDecryptable(response)) {
+            this.trace('not decryptable');
             return of(evt);
         }
 
         // we may need to decrypt a list of encrypted documents (GET /)
         if (response.body instanceof Array) {
+            this.trace('decrypting a list');
             return this.decryptList(response);
         }
 
         // If not an array, then it's just one encryted document (GET /ID)
+        this.trace('decrypting an item');
         return this.decryptItem(response);
     }
 
@@ -135,10 +149,10 @@ export class IronHttpInterceptor implements HttpInterceptor {
             );
     }
 
-    // Default trace method
+    // Call traceFn method if defined
     private trace(...args: any[]) {
-        if (this.isTracing) {
-            console.log(args);
+        if (this.traceFn) {
+            this.traceFn(args);
         }
     }
 }

@@ -38,11 +38,12 @@ export class EncryptedDocument {
      *
      * @param json JSON representation of IronWeb.EncryptedDocumentResponse
      */
-    static from(json: string): EncryptedDocument {
-        return {
-            id: json['id'],
-            document: json['document']
-        };
+    static from(json: any): EncryptedDocument {
+        return Object.assign(new EncryptedDocument(), json);
+    }
+
+    static isDecryptable(body: any): boolean {
+        return body && body.id && body.document;
     }
 }
 
@@ -234,6 +235,7 @@ export class IronService {
         return fetch(`http://localhost:3001/generateJWT?userID=${userID}`)
             .then(response => response.text())
             .catch(e => {
+                // tslint:disable-next-line:no-console
                 console.log(e);
                 return '';
             });
@@ -253,6 +255,7 @@ export class IronService {
                 IronWeb.document
                     .getMetadata('' + encryptedDocument.id)
                     .then(response => {
+                        // tslint:disable-next-line:no-console
                         console.log('getMetadata response', response);
                     });
             })
