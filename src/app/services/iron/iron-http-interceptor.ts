@@ -18,12 +18,11 @@ import { IronPolicyFactory } from './iron-policy-factory';
  */
 @Injectable()
 export class IronHttpInterceptor implements HttpInterceptor {
-    private isTracing = false;
+    // tslint:disable-next-line:no-console
+    traceFn = (args) => console.log(args);
 
-    // TODO: Accept an external trace function
     // TODO: Consider encryption and decryption subject events
     constructor(private iron: IronService, private policyFactory: IronPolicyFactory) {
-        this.isTracing = true;
     }
 
     /**
@@ -55,7 +54,7 @@ export class IronHttpInterceptor implements HttpInterceptor {
                     tap((evt) => this.trace('pre-decrypt', policy, req, evt)),
                     switchMap((evt) => this.decrypt(evt)),
                     tap((devt) => this.trace('post-decrypt', devt))
-                )
+                );
         }
 
         // Pass through, nothing to do but chain to next
@@ -71,10 +70,10 @@ export class IronHttpInterceptor implements HttpInterceptor {
 
         if (response.body instanceof Array) {
             const list = response.body as any[];
-            return list.every((item) => EncryptedDocument.is(item));
+            return list.every((item) => EncryptedDocument.isDecryptable(item));
         }
 
-        return EncryptedDocument.is(response.body);
+        return EncryptedDocument.isDecryptable(response.body);
     }
 
     /**
@@ -86,7 +85,7 @@ export class IronHttpInterceptor implements HttpInterceptor {
         // peek into the payload to see if it's an encrypted document
         const response = evt as HttpResponse<any>;
         if (!this.isDecryptable(response)) {
-            this.trace('not decryptable')
+            this.trace('not decryptable');
             return of(evt);
         }
 
@@ -150,10 +149,10 @@ export class IronHttpInterceptor implements HttpInterceptor {
             );
     }
 
-    // Default trace method
+    // Call traceFn method if defined
     private trace(...args: any[]) {
-        if (this.isTracing) {
-            console.log(args);
+        if (this.traceFn) {
+            this.traceFn(args);
         }
     }
 }

@@ -38,19 +38,12 @@ export class EncryptedDocument {
      *
      * @param json JSON representation of IronWeb.EncryptedDocumentResponse
      */
-    static from(json: string): EncryptedDocument {
-        return {
-            id: json['id'],
-            document: json['document']
-        };
+    static from(json: any): EncryptedDocument {
+        return Object.assign(new EncryptedDocument(), json);
     }
 
-    static is(json: any): boolean {
-        const s = json as string;
-        if (!s) {
-            return false;
-        }
-        return s['id'] && s['document'];
+    static isDecryptable(body: any): boolean {
+        return body && body.id && body.document;
     }
 }
 
