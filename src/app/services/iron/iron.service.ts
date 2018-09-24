@@ -1,8 +1,8 @@
 import * as IronWeb from '@ironcorelabs/ironweb';
 import { Injectable } from '@angular/core';
-import { User } from '../user/user';
 import { from, Observable } from 'rxjs';
 import { IronStatus } from './iron-status';
+import { IIronIdentityProvider} from './i-iron-identity-provider';
 import { IronPolicyFactory } from './iron-policy-factory';
 
 declare module '@ironcorelabs/ironweb' {
@@ -97,6 +97,9 @@ export class IronService {
      */
     private p: Promise<any>;
 
+    // TODO: This should be a module provider or other DI structure
+    public ironIdentityProvider: IIronIdentityProvider;
+
     /** Construct an IronService, normally from DI */
     constructor(private ironPolicyFactory: IronPolicyFactory) {
         this.p = null;
@@ -109,12 +112,12 @@ export class IronService {
      * @param user The user to add
      * @param groupID The group to add the user to
      */
-    addUserToGroup(user: User, groupID: string): Observable<any> {
+    addUserToGroup(userID: string, groupID: string): Observable<any> {
         // TODO: Wrap the return value and change Observable<any> to a
         // concrete type.
         return from(
             this.p.then(() => {
-                return IronWeb.group.addMembers(groupID, [user.id]);
+                return IronWeb.group.addMembers(groupID, [userID]);
             })
         );
     }
@@ -126,7 +129,7 @@ export class IronService {
      *
      * @param user The user to activate ('login')
      */
-    asUser(user: User): Promise<any> {
+    asUser(userID: string): Promise<any> {
         // On the first time through, create a resolved Promise to avoid a null
         // dereference
         if (!this.p) {
@@ -136,8 +139,8 @@ export class IronService {
         // Serialize SDK requests on completion of previous asUser request
         return (this.p = this.p.then(() => {
             return IronWeb.initialize(
-                () => this.getJWT(user.id),
-                () => this.getUserPasscode()
+                () => this.ironIdentityProvider.getJWT(userID),
+                () => this.ironIdentityProvider.getUserPasscode()
             );
         }));
     }
@@ -226,6 +229,7 @@ export class IronService {
         });
     }
 
+<<<<<<< HEAD
     /**
      * Request a signed JWT from the server for the current project and segment.
      */
@@ -249,6 +253,8 @@ export class IronService {
         return Promise.resolve('SAMPLE_PASSCODE');
     }
 
+=======
+>>>>>>> identity-provider
     metadata(encryptedDocument: EncryptedDocument) {
         return from(
             this.p.then(() => {
@@ -269,10 +275,10 @@ export class IronService {
      * @param user The user to remove
      * @param groupID The group to remove the user from
      */
-    removeUserFromGroup(user: User, groupID: string): Observable<any> {
+    removeUserFromGroup(userID: string, groupID: string): Observable<any> {
         return from(
             this.p.then(() => {
-                return IronWeb.group.removeMembers(groupID, [user.id]);
+                return IronWeb.group.removeMembers(groupID, [userID]);
             })
         );
     }

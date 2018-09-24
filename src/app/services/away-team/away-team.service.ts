@@ -24,7 +24,7 @@ export class AwayTeamService {
         user.isBeingAddedOrRemoved = true;
         return this.http.post<AwayTeamMember>(this.url, atm)
             .pipe(
-                switchMap(() => this.iron.addUserToGroup(user, groupID)),
+                switchMap(() => this.iron.addUserToGroup(user.id, groupID)),
                 tap(() => user.isBeingAddedOrRemoved = false),
                 tap(() => this.memberAdded$.next(atm))
             );
@@ -40,7 +40,7 @@ export class AwayTeamService {
         user.isBeingAddedOrRemoved = true;
         return this.http.delete<AwayTeamMember>(this.url + `/${atm.id}`)
             .pipe(
-                switchMap(() => this.iron.removeUserFromGroup(user, groupID)),
+                switchMap(() => this.iron.removeUserFromGroup(user.id, groupID)),
                 tap(() => user.isBeingAddedOrRemoved = false),
                 tap(() => this.memberRemoved$.next(atm))
             );

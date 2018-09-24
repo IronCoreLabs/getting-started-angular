@@ -4,6 +4,7 @@ import { IronService } from '../iron/iron.service';
 import * as Users from '../user/user.service';
 import { IronPolicyFactory } from '../iron/iron-policy-factory';
 import { Utils } from '../../utils';
+import { UserIdentityProviderService } from '../user/user-identity-provider.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,9 @@ export class AppService {
     constructor(
         private ironPolicyFactory: IronPolicyFactory,
         private ironService: IronService,
-        private userService: Users.UserService) {
+        private userService: Users.UserService,
+        private userIdentityService: UserIdentityProviderService) {
+            ironService.ironIdentityProvider = this.userIdentityService;
     }
 
     /**

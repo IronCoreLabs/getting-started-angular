@@ -95,7 +95,7 @@ export class UserService {
         this.userChanging.next(user);
 
         // (Re-)Initialize the IronCore Service
-        this.ironService.asUser(user).then(() => {
+        this.ironService.asUser(user.id).then(() => {
             // Bookkeeping
             this._isChanging = false;
             user.isLoading = false;
