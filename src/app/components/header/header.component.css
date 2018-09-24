@@ -11,13 +11,13 @@ header {
 h1 {
     font-size: 22px;
     letter-spacing: .4px;
+    padding-right: 8px;
 }
 
 .iron-title {
     font-family: ProximaNova-Bold;
     color: black;
     text-transform: uppercase;
-    padding-right: 10px;
 }
 
 img {

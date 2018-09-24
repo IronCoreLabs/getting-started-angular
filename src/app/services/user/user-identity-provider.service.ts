@@ -10,8 +10,7 @@ export class UserIdentityProviderService implements IIronIdentityProvider {
      */
     getJWT(userID): Promise<string> {
         // TODO: Catch and gracefully handle invalid JWT
-        // TODO: See if we can eliminate node server dependency
-        return fetch(`http://localhost:3001/generateJWT?userID=${userID}`)
+        return fetch(`https://us-central1-sample-getting-started.cloudfunctions.net/getting-started-sample-1?userID=${userID}`)
             .then(response => response.text())
             .catch(e => {
                 // tslint:disable-next-line:no-console
