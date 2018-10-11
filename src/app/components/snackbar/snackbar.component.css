@@ -1,0 +1,12 @@
+.snackbar {
+    background-color: blue;
+    color: white;
+    max-height: 300px;
+}
+
+.fade-out {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 3s, visibility 0s linear 3s, opacity 3s;
+}
