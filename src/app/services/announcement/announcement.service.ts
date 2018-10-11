@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { Announcement, AnnouncementType } from './announcement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnnouncementService {
-  readonly newAnnouncement$: Subject<Announcement>;
+  readonly newAnnouncement$: ReplaySubject<Announcement>;
 
   constructor() {
-    this.newAnnouncement$ = new Subject<Announcement>();
+    this.newAnnouncement$ = new ReplaySubject<Announcement>(1);
   }
 
   announce(aore: Announcement | Error) {
