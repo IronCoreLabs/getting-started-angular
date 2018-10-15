@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     // Kick off services
     constructor(private appService: AppService,
-        private userService: UserService) {
+                private userService: UserService) {
     }
 
     ngOnInit() {
