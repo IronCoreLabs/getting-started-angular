@@ -13,11 +13,9 @@ export class AnnouncementService {
   }
 
   announce(aore: Announcement | Error) {
-    if (this.isAnnouncement(aore)) {
-      this.newAnnouncement$.next(aore);
-    } else {
-      this.newAnnouncement$.next(Announcement.fromError(aore));
-    }
+    return this.newAnnouncement$.next(this.isAnnouncement(aore) ?
+                                      aore :
+                                      Announcement.fromError(aore));
   }
 
   isAnnouncement(a: Announcement | Error): a is Announcement {
