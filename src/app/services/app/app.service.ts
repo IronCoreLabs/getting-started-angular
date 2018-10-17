@@ -37,6 +37,8 @@ export class AppService {
 
         // Get details for our test group
         return this.getTestGroupDetails().then((group) => {
+            // tslint:disable-next-line:no-console
+            console.log('away team group created', group);
             this.ironPolicyFactory.bindings.set('top-secret', group.groupID);
         });
     }
