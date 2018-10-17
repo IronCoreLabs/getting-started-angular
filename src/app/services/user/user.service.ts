@@ -100,6 +100,8 @@ export class UserService {
             this._isChanging = false;
             user.isLoading = false;
             // Announce the user has changed event
+            // tslint:disable-next-line:no-console
+            console.log(`As user ${user.name}`);
             this.userChanged.next(user);
         });
     }

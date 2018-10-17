@@ -13,6 +13,7 @@ import { InMemoryDataService } from './services/in-memory-data-service/in-memory
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { SelectUserComponent } from './components/select-user/select-user.component';
 import { TeamManagementToggleComponent } from './components/team-management-toggle/team-management-toggle.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { TeamManagementToggleComponent } from './components/team-management-togg
         NewOrderFormComponent,
         OrderListComponent,
         SelectUserComponent,
-        TeamManagementToggleComponent
+        TeamManagementToggleComponent,
+        SnackbarComponent
     ],
     imports: [
         // These are order dependent per Angular docs

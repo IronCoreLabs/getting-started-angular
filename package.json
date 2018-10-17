@@ -1,7 +1,7 @@
 {
     "name": "ironcore-getting-started-angular",
     "scripts": {
-        "start": "node server/server.js &! ng serve"
+        "start": "node server/server.js &! ng serve -o"
     },
     "private": true,
     "dependencies": {
