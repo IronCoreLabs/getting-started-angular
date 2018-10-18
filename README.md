@@ -4,4 +4,4 @@ IronCore is a data privacy SDK and cloud service. This repo is a sample Angular 
 
 Follow the tutorial to get started:
 
-https://docs.ironcorelabs.com/getting-started-angular
+https://docs.ironcorelabs.com/getting-started/angular/
