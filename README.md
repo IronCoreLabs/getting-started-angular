@@ -31,3 +31,6 @@ For a front-end component library, this project is using Angular. For more infor
 ### Angular in Memory Web API
 
 Angular in-memory web API is used to emulate CRUD operations over a REST API. It works by intercepting Angular Http requests that would otherwise go to the remote server and redirects them to an in-memory data store. For reference, please see: [in-memory-web-api on GitHub](https://github.com/angular/in-memory-web-api).
+
+Copyright (c)  2018-present  IronCore Labs, Inc.
+All rights reserved.
