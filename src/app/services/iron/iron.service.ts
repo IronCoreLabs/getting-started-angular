@@ -1,15 +1,9 @@
-import * as IronWeb from '@ironcorelabs/ironweb';
-import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { IronStatus } from './iron-status';
-import { IIronIdentityProvider} from './i-iron-identity-provider';
-import { IronPolicyFactory } from './iron-policy-factory';
-
-declare module '@ironcorelabs/ironweb' {
-    let codec: Codec;
-    let document: Document;
-    let group: Group;
-}
+import * as IronWeb from "@ironcorelabs/ironweb";
+import {Injectable} from "@angular/core";
+import {from, Observable} from "rxjs";
+import {IronStatus} from "./iron-status";
+import {IIronIdentityProvider} from "./i-iron-identity-provider";
+import {IronPolicyFactory} from "./iron-policy-factory";
 
 /**
  * EncryptedDocument maps the IronWeb encryption response to make it easier to
@@ -19,7 +13,7 @@ declare module '@ironcorelabs/ironweb' {
  */
 export class EncryptedDocument {
     id: Number;
-    document: IronWeb.Base64Bytes;
+    document: string;
 
     /**
      * Wrap the response, converting ids to Numbers for easier consumption
@@ -28,7 +22,7 @@ export class EncryptedDocument {
      */
     constructor(response?: IronWeb.EncryptedDocumentResponse) {
         this.id = response ? +response.documentID : -1;
-        this.document = response ? response.document : '';
+        this.document = response ? IronWeb.codec.base64.fromBytes(response.document) : "";
     }
 
     // TODO: Error construction
@@ -62,7 +56,7 @@ export class DecryptedDocument {
             this.document = IronWeb.codec.utf8.fromBytes(response.data);
         } else {
             this.id = -1;
-            this.document = '{}';
+            this.document = "{}";
         }
     }
 
@@ -75,7 +69,7 @@ export class DecryptedDocument {
     static from(sdkError: IronWeb.SDKError): DecryptedDocument {
         const result = new DecryptedDocument();
         result.document = JSON.stringify({
-            __ironStatus: new IronStatus(sdkError)
+            __ironStatus: new IronStatus(sdkError),
         });
         return result;
     }
@@ -85,7 +79,7 @@ export class DecryptedDocument {
  * Service pattern to wrap IronWeb, consistent with Angular best practices
  */
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root",
 })
 export class IronService {
     /**
@@ -138,10 +132,7 @@ export class IronService {
 
         // Serialize SDK requests on completion of previous asUser request
         return (this.p = this.p.then(() => {
-            return IronWeb.initialize(
-                () => this.ironIdentityProvider.getJWT(userID),
-                () => this.ironIdentityProvider.getUserPasscode()
-            );
+            return IronWeb.initialize(() => this.ironIdentityProvider.getJWT(userID), () => this.ironIdentityProvider.getUserPasscode());
         }));
     }
 
@@ -167,14 +158,12 @@ export class IronService {
             this.p
                 .then(() => {
                     // Convert Number id to string id
-                    return IronWeb.document
-                        .decrypt('' + encryptedDocument.id, encryptedDocument.document)
-                        .then(ddr => {
-                            // Map the IronWeb response
-                            return new DecryptedDocument(ddr);
-                        });
+                    return IronWeb.document.decrypt("" + encryptedDocument.id, IronWeb.codec.base64.toBytes(encryptedDocument.document)).then((ddr) => {
+                        // Map the IronWeb response
+                        return new DecryptedDocument(ddr);
+                    });
                 })
-                .catch(error => {
+                .catch((error) => {
                     // Catch SDKErrors and attach them to DecryptedDocument to
                     // simplify error handling
                     return DecryptedDocument.from(error);
@@ -187,7 +176,7 @@ export class IronService {
      */
     encrypt(dto: any): Observable<EncryptedDocument> {
         // TODO: Guard assertions and/or strong types
-        const documentId = '' + dto.id;
+        const documentId = "" + dto.id;
         const documentData = IronWeb.codec.utf8.toBytes(JSON.stringify(dto));
 
         // Determine the group to encrypt to from the data transfer object
@@ -200,10 +189,10 @@ export class IronService {
                 .then(() => {
                     return IronWeb.document
                         .encrypt(documentData, {
-                            accessList: { groups: [{ id: groupId }] },
-                            documentID: documentId
+                            accessList: {groups: [{id: groupId}]},
+                            documentID: documentId,
                         })
-                        .then(response => {
+                        .then((response) => {
                             return new EncryptedDocument(response);
                         });
                 })
@@ -232,12 +221,10 @@ export class IronService {
     metadata(encryptedDocument: EncryptedDocument) {
         return from(
             this.p.then(() => {
-                IronWeb.document
-                    .getMetadata('' + encryptedDocument.id)
-                    .then(response => {
-                        // tslint:disable-next-line:no-console
-                        console.log('getMetadata response', response);
-                    });
+                IronWeb.document.getMetadata("" + encryptedDocument.id).then((response) => {
+                    // tslint:disable-next-line:no-console
+                    console.log("getMetadata response", response);
+                });
             })
         );
     }
