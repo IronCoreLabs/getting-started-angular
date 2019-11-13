@@ -1,12 +1,12 @@
 # Ironcore Getting Started Angular
 
-IronCore is a data privacy SDK and cloud service. This repo is a sample Angular application that uses IronCore to grant, monitor and revoke access to sensitive data. For IronWeb, the IronCore SDK used in this project, please see [IronWeb SDK documentation](https://docs.ironcorelabs.com/ironweb-sdk/overview).
+IronCore is a data privacy SDK and cloud service. This repo is a sample Angular application that uses IronCore to grant, monitor and revoke access to sensitive data. For IronWeb, the IronCore SDK used in this project, please see [IronWeb SDK documentation](https://ironcorelabs.com/docs/ironweb-sdk/overview).
 
 ## Tutorial
 
 Follow the tutorial to get started:
 
-https://docs.ironcorelabs.com/getting-started/angular/
+https://ironcorelabs.com/docs/getting-started/angular/
 
 ## Project setup
 

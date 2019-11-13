@@ -1,23 +1,26 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    // "strict": true,
-    "noImplicitReturns": true,
-    "noUnusedParameters": true,
-    "noEmitOnError": true,
-    "noUnusedLocals": true,
-    "pretty": true,
-    "removeComments": true,
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"]
-  }
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        // "strict": true,
+        "noImplicitReturns": true,
+        "noUnusedParameters": true,
+        "noEmitOnError": true,
+        "noUnusedLocals": true,
+        "pretty": true,
+        "removeComments": true,
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["es2017", "dom"]
+    },
+    "angularCompilerOptions": {
+        "disableTypeScriptVersionCheck": true
+    }
 }
